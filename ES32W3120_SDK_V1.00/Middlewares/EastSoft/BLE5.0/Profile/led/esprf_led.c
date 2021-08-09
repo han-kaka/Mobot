@@ -22,6 +22,7 @@ Note		:	None
 
 #include "esprf_led.h"
 
+#include "eslog_init.h"
 
 static esprf_led_app_hdl_t esprf_led_app_hdl;
 static esprf_led_env_t esprf_led_env;
@@ -39,7 +40,7 @@ static esble_gattm_att_desc_t led_att_db[LED_IDX_NB] =
 	// LED Characteristic Declaration
 	[LED_IDX_LED_CHAR]			= {ESBLE_ATT_DECL_CHARACTERISTIC, {0}, ESBLE_PERM(RD, ENABLE), 0, 0},
 	// LED Characteristic Value
-	[LED_IDX_LED_VAL]			= {0, LED_CHAR_UUIND, ESBLE_PERM(RD, ENABLE) | ESBLE_PERM(WRITE_REQ, ENABLE), ESBLE_PERM(RI, ENABLE) | ESBLE_PERM(UUID_LEN, UUID_128), LED_VALUE_MAX_LEN},
+	[LED_IDX_LED_VAL]			= {0, LED_CHAR_UUIND, ESBLE_PERM(WRITE_COMMAND, ENABLE) | ESBLE_PERM(WRITE_REQ, ENABLE), ESBLE_PERM(RI, ENABLE) | ESBLE_PERM(UUID_LEN, UUID_128), LED_VALUE_MAX_LEN},
 
 	// BUTTON Characteristic Declaration
 	[LED_IDX_BUTTON_CHAR]		= {ESBLE_ATT_DECL_CHARACTERISTIC, {0}, ESBLE_PERM(RD, ENABLE), 0, 0},
@@ -153,9 +154,9 @@ void esprf_led_init(esprf_led_app_hdl_t *app_hdl, uint8_t led_init_value)
 	Notes		:
 */
 /*************************************************************************************************/
-int esprf_led_button_send(uint8_t button_value)
+int esprf_led_button_send(uint16_t length, uint8_t *button_value)
 {
-	uint8_t value[LED_VALUE_MAX_LEN] = {0};
+	uint8_t value[BLE_L2CAP_MAX_MTU] = {0};
 	esble_gattc_send_evt_cmd_t cmd;
 
 	if ((esprf_led_env.ntf_ind & LED_CFG_BUTTON_NTF) == 0)
@@ -165,8 +166,16 @@ int esprf_led_button_send(uint8_t button_value)
 
 	cmd.conidx	= esprf_led_env.conidx;
 	cmd.handle	= ESPRF_LED_HANDLE(LED_IDX_BUTTON_VAL);
-	cmd.length	= LED_VALUE_MAX_LEN;
-	value[0]	= button_value;
+	cmd.length	= length;
+	
+	ES_LOG_PRINT("send data len:%d, data:", length);
+	for(uint16_t i=0; i<length; i++)
+	{
+		value[i]	= button_value[i];
+		ES_LOG_PRINT("%.2x", value[i]);
+	}
+	ES_LOG_PRINT("\n");
+	
 	cmd.value	= value;
 
 	esble_gattc_send_notf(&cmd);
@@ -193,7 +202,7 @@ int esprf_led_write_req_cfm(uint8_t conidx, uint8_t status, uint8_t new_value)
 
 	if (status == ATT_ERR_NO_ERROR)
 	{
-		esprf_led_env.led_value = new_value;
+//			esprf_led_env.led_value = new_value;
 	}
 
 	esble_gattc_write_cfm(&cfm);
@@ -297,7 +306,7 @@ static void esprf_led_gattc_write_req_ind_hdl(const esble_gattc_write_req_ind_t 
 	{
 		case LED_IDX_LED_VAL:
 		{
-			if(ind->length != LED_VALUE_MAX_LEN)
+			if(ind->length > LED_VALUE_MAX_LEN)
 			{
 				status = PRF_ERR_UNEXPECTED_LEN;
 				break;
@@ -312,14 +321,14 @@ static void esprf_led_gattc_write_req_ind_hdl(const esble_gattc_write_req_ind_t 
 			send_cfm = false;
 			if (esprf_led_app_hdl.led_write_req != NULL)
 			{
-				esprf_led_app_hdl.led_write_req(ind->conidx, ind->value[0]);
+				esprf_led_app_hdl.led_write_req(ind->conidx, ind->length, ind->value);
 			}
 
 		}break;
 
 		case LED_IDX_BUTTON_IND_CFG:
 		{
-			if(ind->length != LED_IND_NTF_CFG_MAX_LEN)
+			if(ind->length > LED_IND_NTF_CFG_MAX_LEN)
 			{
 				status = PRF_ERR_UNEXPECTED_LEN;
 				break;
@@ -411,7 +420,7 @@ lib_hdl_tbl_t esprf_led_hdl_tbl[] =
 
 	{ESBLE_GATTC_CMP_EVT,		(esprf_hdl)esprf_led_gattc_cmp_hdl},
 	{ESBLE_GATTC_WRITE_REQ_IND,	(esprf_hdl)esprf_led_gattc_write_req_ind_hdl},
-	{ESBLE_GATTC_READ_REQ_IND,	(esprf_hdl)esprf_led_gattc_read_req_ind_hdl},
+	//{ESBLE_GATTC_READ_REQ_IND,	(esprf_hdl)esprf_led_gattc_read_req_ind_hdl},
 };
 
 BLECB_REGI(esprf_led_hdl_tbl);

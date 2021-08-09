@@ -17,6 +17,8 @@ Note		:	None
 
 #include "esble_comm.h"
 
+#include "eslog_init.h"
+
 #include "lib.h"
 #include "lib_conf.h"
 #include "lib_adv.h"
@@ -33,6 +35,9 @@ Note		:	None
 #if BLE_LED_CLIENT
 extern esprf_led_c_env_t g_esprf_led_c_env;
 #endif //BLE_LED_CLIENT
+
+extern uint8_t send_flag;
+
 static lib_adv_t app_adv 		= {.adv_idx = ESBLE_INVALID_ACTIDX};
 lib_scan_t app_scan 			= {.scan_idx = ESBLE_INVALID_ACTIDX};
 lib_init_t app_init 			= {.init_idx = ESBLE_INVALID_ACTIDX};
@@ -199,18 +204,31 @@ static void esapp_add_svc_finish(uint8_t status)
 */
 /*************************************************************************************************/
 #if BLE_LED_SERVER
-static void esapp_led_write_req(uint8_t conidx, uint8_t value)
+static void esapp_led_write_req(uint8_t conidx, uint16_t length, uint8_t *value)
 {
-	if (value)
+	esprf_led_write_req_cfm(conidx, ATT_ERR_NO_ERROR, value[0]);
+	
+	esapp_button(length, value);
+	
+	ES_LOG_PRINT("receive data len:%d, data:", length);
+	for(uint16_t i=0; i<length; i++) 
 	{
-		ald_gpio_write_pin(GPIOA, GPIO_PIN_11, 0);
+		ES_LOG_PRINT("%.2x", value[i]);
 	}
-	else
-	{
-		ald_gpio_write_pin(GPIOA, GPIO_PIN_11, 1);
-	}
-
-	esprf_led_write_req_cfm(conidx, ATT_ERR_NO_ERROR, value);
+	ES_LOG_PRINT("\n");
+	
+//	if(20 == length && 0xc4 == value[2] && 0x01 == value[3]) {
+		send_flag = 1;
+//	}
+	
+//	if (value)
+//	{
+//		ald_gpio_write_pin(GPIOA, GPIO_PIN_11, 0);
+//	}
+//	else
+//	{
+//		ald_gpio_write_pin(GPIOA, GPIO_PIN_11, 1);
+//	}
 }
 #endif //BLE_LED_SERVER
 
@@ -428,12 +446,13 @@ static void esapp_adv_init(void)
 	init.cmd.adv_param.prim_cfg.adv_intv_min	= ESAPP_ADV_INT_MIN;
 	init.cmd.adv_param.prim_cfg.adv_intv_max	= ESAPP_ADV_INT_MAX;
 
-//	init.adv_data.name_type						= LIB_ADVDATA_FULL_NAME;
+	init.adv_data.name_type						= LIB_ADVDATA_FULL_NAME;
 //	init.adv_data.include_addr					= true;
 //	init.adv_data.include_appearance			= true;
 //	init.adv_data.slave_conn_intl				= &g_slave_pref_conn_intval;
-	init.adv_data.incomplete_128bit_uuid_list	= &g_incomplet_128bit_uuid;
-
+//	init.adv_data.incomplete_128bit_uuid_list	= &g_incomplet_128bit_uuid;
+	
+	init.scan_rsp_data.incomplete_128bit_uuid_list	= &g_incomplet_128bit_uuid;
 
 	init.hdl.lib_adv_create_evt					= esapp_create_adv_evt;
 	init.hdl.lib_adv_set_adv_data_evt			= esapp_set_adv_data_evt;
@@ -708,10 +727,10 @@ void esapp_init(void)
 	Notes		:
 */
 /*************************************************************************************************/
-void esapp_button(uint8_t value)
+void esapp_button(uint16_t length, uint8_t *value)
 {
 	#if BLE_LED_SERVER
-	esprf_led_button_send(value);
+	esprf_led_button_send(length, value);
 	#endif //BLE_LED_SERVER
 }
 
@@ -790,19 +809,21 @@ static void esapp_gapc_conn_req_ind(const esble_gapc_conn_req_ind_t *ind)
 	ald_gpio_write_pin(GPIOA, GPIO_PIN_8, 0);
 	ald_gpio_write_pin(GPIOA, GPIO_PIN_7, 1);
 
+
 	if(role == ESBLE_SLAVE_ROLE)						/*set timer for connection parameters update*/
 	{
-//		esble_gapc_param_upd_cmd_t param_upd;
+		esble_gapc_param_upd_cmd_t param_upd;
 
-//		param_upd.conidx = conidx;
-//		param_upd.pkt_id = rand();
-//		param_upd.intv_min = BLE_INIT_PAR_CONN_PARAM_1M_CONN_INTV_MIN*2;
-//		param_upd.intv_max = BLE_INIT_PAR_CONN_PARAM_1M_CONN_INTV_MAX*2;
-//		param_upd.latency = BLE_INIT_PAR_CONN_PARAM_1M_CONN_LATENCY*2;
-//		param_upd.time_out = BLE_INIT_PAR_CONN_PARAM_1M_SUPERVISION_TO*2;
-//		param_upd.ce_len_min = BLE_INIT_PAR_CONN_PARAM_1M_CE_LEN_MIN*2;
-//		param_upd.ce_len_max = BLE_INIT_PAR_CONN_PARAM_1M_CE_LEN_MAX*2;
-
+		param_upd.conidx = conidx;
+		param_upd.pkt_id = rand();
+		param_upd.intv_min = BLE_INIT_PAR_CONN_PARAM_1M_CONN_INTV_MIN*2;
+		param_upd.intv_max = BLE_INIT_PAR_CONN_PARAM_1M_CONN_INTV_MAX*2;
+		param_upd.latency = BLE_INIT_PAR_CONN_PARAM_1M_CONN_LATENCY*2;
+		param_upd.time_out = BLE_INIT_PAR_CONN_PARAM_1M_SUPERVISION_TO*2;
+		param_upd.ce_len_min = BLE_INIT_PAR_CONN_PARAM_1M_CE_LEN_MIN*2;
+		param_upd.ce_len_max = BLE_INIT_PAR_CONN_PARAM_1M_CE_LEN_MAX*2;
+		esble_gapc_param_upd(&param_upd);
+		
 //		g_conn_instance[conidx].upd_param.arg = (void *)&param_upd;
 //		g_conn_instance[conidx].upd_param.timeout_hdl = esapp_conn_param_upd_to;
 //		g_conn_instance[conidx].upd_param.ms = 1000;
@@ -842,6 +863,7 @@ static void esapp_gapc_disconn_ind(const esble_gapc_disconn_ind_t *ind)
 		lib_init_start(&app_init);
 	}
 
+	send_flag = 0;
 	ald_gpio_write_pin(GPIOA, GPIO_PIN_8, 1);
 }
 

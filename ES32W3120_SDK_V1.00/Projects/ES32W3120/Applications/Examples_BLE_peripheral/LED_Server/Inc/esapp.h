@@ -23,7 +23,7 @@ typedef struct
 
 void esapp_init(void);
 
-void esapp_button(uint8_t value);
+void esapp_button(uint16_t length, uint8_t *value);
 
 
 #endif
