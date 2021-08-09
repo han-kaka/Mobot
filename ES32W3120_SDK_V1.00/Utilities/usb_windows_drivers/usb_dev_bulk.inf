@@ -1,0 +1,68 @@
+; -----------------------------------------------------------------------------
+;
+; EastSoft Generic Bulk USB device driver installer
+;
+; This INF file may be used as a template when creating customized applications
+; based on the EastSoft generic bulk devices. Areas of the file requiring
+; customization for a new device are commented with NOTEs.
+;
+; -----------------------------------------------------------------------------
+
+; NOTE: When you customize this INF for your own device, create a new class
+; name (Class) and a new GUID (ClassGuid). GUIDs may be created using the
+; guidgen tool from Windows Visual Studio.
+[Version]
+Signature = "$Windows NT$"
+Class     = USBDevice
+ClassGUID = {88BAE032-5A81-49f0-BC3D-A4FF138216D6}
+Provider  = %ManufacturerName%
+DriverVer = 06/04/2019, 1.0.0.0
+CatalogFile.nt      = usb_dev_bulk_x86.cat
+CatalogFile.ntx86   = usb_dev_bulk_x86.cat
+CatalogFile.ntamd64 = usb_dev_bulk_amd64.cat
+
+; ========== Manufacturer/Models sections ===========
+
+[Manufacturer]
+%ManufacturerName% = Devices, NTx86, NTamd64
+
+[Devices.NTx86]
+%DeviceName0% = USB_Install, USB\VID_30CC&PID_0003
+
+[Devices.NTamd64]
+%DeviceName0% = USB_Install, USB\VID_30CC&PID_0003
+
+; ========== Class definition ===========
+
+[ClassInstall32]
+AddReg = ClassInstall_AddReg
+
+[ClassInstall_AddReg]
+HKR,,,,%ClassName%
+HKR,,NoInstallClass,,1
+HKR,,IconPath,%REG_MULTI_SZ%,"%systemroot%\system32\setupapi.dll,-20"
+HKR,,LowerLogoVersion,,5.2
+
+; =================== Installation ===================
+
+[USB_Install]
+Include = winusb.inf
+Needs = WINUSB.NT
+
+[USB_Install.Services]
+Include = winusb.inf
+Needs = WINUSB.NT.Services
+
+[USB_Install.HW]
+AddReg = Dev_AddReg
+
+[Dev_AddReg]
+HKR,,DeviceInterfaceGUIDs,0x10000,"{F70242C7-FB25-443B-9E7E-A4260F373982}"
+
+; =================== Strings ===================
+
+[Strings]
+ClassName        = "Universal Serial Bus devices"
+ManufacturerName = "Shanghai Eastsoft Microelectronics Co., Ltd."
+DeviceName0      = "ES32 Bulk Device"
+

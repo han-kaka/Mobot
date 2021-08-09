@@ -1,0 +1,48 @@
+;
+;   EastSoft USB CDC (serial) driver installation file.
+;
+[Version]
+Signature="$Windows NT$"
+Class=Ports
+ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318}
+Provider=%MFGNAME%
+LayoutFile=layout.inf
+CatalogFile=usb_dev_serial.cat
+DriverVer=12/13/2018,0.0.1
+
+[Manufacturer]
+%MFGNAME%=VirComDevice,NT,NTamd64
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[VirComDevice.NT]
+%DESCRIPTION%=DriverInstall,USB\Vid_30CC&Pid_0002
+
+[VirComDevice.NTamd64]
+%DESCRIPTION%=DriverInstall,USB\Vid_30CC&Pid_0002
+
+[DriverInstall.NT]
+Include=mdmcpq.inf
+CopyFiles=FakeModemCopyFileSection
+AddReg=DriverInstall.NT.AddReg
+
+[DriverInstall.NT.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,usbser.sys
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+
+[DriverInstall.NT.Services]
+AddService=usbser, 0x00000002, DriverServiceInst
+
+[DriverServiceInst]
+DisplayName=%SERVICE%
+ServiceType=1
+StartType=3
+ErrorControl=1
+ServiceBinary=%12%\usbser.sys
+
+[Strings]
+MFGNAME     = "Shanghai Eastsoft Microelectronics Co., Ltd."
+DESCRIPTION = "ES32 USB serial port"
+SERVICE     = "ES32 USB CDC serial port"

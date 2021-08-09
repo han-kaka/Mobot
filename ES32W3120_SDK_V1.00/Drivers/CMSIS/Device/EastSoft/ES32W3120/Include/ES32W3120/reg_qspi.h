@@ -1,0 +1,575 @@
+/**
+  **************************************************************************************
+  * @file    REG_QSPI.h
+  * @brief   QSPI Head File
+  *
+  * @version V0.01
+  * @data    8/24/2020
+  * @author  Eastsoft MCU Software Team
+  * @note
+  *
+  * Copyright (C) 2018 Shanghai Eastsoft Microelectronics Co., Ltd. ALL rights reserved.
+  *
+  **************************************************************************************
+  */
+
+#ifndef __QSPI_H__
+#define __QSPI_H__
+
+
+/******************************************************************************/
+/*                              设备特殊寄存器结构定义                        */
+/******************************************************************************/
+
+/*   允许匿名结构和匿名联合    */
+ 
+
+/****************** Bit definition for QSPI_CR register ************************/
+
+#define	QSPI_CR_IDLES_POS	31U 
+#define	QSPI_CR_IDLES_MSK	BIT(QSPI_CR_IDLES_POS)
+
+#define	QSPI_CR_DTRM_POS	24U 
+#define	QSPI_CR_DTRM_MSK	BIT(QSPI_CR_DTRM_POS)
+
+#define	QSPI_CR_ADEN_POS	23U 
+#define	QSPI_CR_ADEN_MSK	BIT(QSPI_CR_ADEN_POS)
+
+#define	QSPI_CR_BAUD_POSS	19U 
+#define	QSPI_CR_BAUD_POSE	22U 
+#define	QSPI_CR_BAUD_MSK	BITS(QSPI_CR_BAUD_POSS,QSPI_CR_BAUD_POSE)
+
+#define	QSPI_CR_XIPIM_POS	18U 
+#define	QSPI_CR_XIPIM_MSK	BIT(QSPI_CR_XIPIM_POS)
+
+#define	QSPI_CR_XIPNX_POS	17U 
+#define	QSPI_CR_XIPNX_MSK	BIT(QSPI_CR_XIPNX_POS)
+
+#define	QSPI_CR_AREN_POS	16U 
+#define	QSPI_CR_AREN_MSK	BIT(QSPI_CR_AREN_POS)
+
+#define	QSPI_CR_DMAEN_POS	15U 
+#define	QSPI_CR_DMAEN_MSK	BIT(QSPI_CR_DMAEN_POS)
+
+#define	QSPI_CR_SWPP_POS	14U 
+#define	QSPI_CR_SWPP_MSK	BIT(QSPI_CR_SWPP_POS)
+
+#define	QSPI_CR_PSL_POSS	10U 
+#define	QSPI_CR_PSL_POSE	13U 
+#define	QSPI_CR_PSL_MSK	BITS(QSPI_CR_PSL_POSS,QSPI_CR_PSL_POSE)
+
+#define	QSPI_CR_PSD_POS	9U 
+#define	QSPI_CR_PSD_MSK	BIT(QSPI_CR_PSD_POS)
+
+#define	QSPI_CR_LIMEN_POS	8U 
+#define	QSPI_CR_LIMEN_MSK	BIT(QSPI_CR_LIMEN_POS)
+
+#define	QSPI_CR_DACEN_POS	7U 
+#define	QSPI_CR_DACEN_MSK	BIT(QSPI_CR_DACEN_POS)
+
+#define	QSPI_CR_CPHA_POS	2U 
+#define	QSPI_CR_CPHA_MSK	BIT(QSPI_CR_CPHA_POS)
+
+#define	QSPI_CR_CPOL_POS	1U 
+#define	QSPI_CR_CPOL_MSK	BIT(QSPI_CR_CPOL_POS)
+
+#define	QSPI_CR_EN_POS	0U 
+#define	QSPI_CR_EN_MSK	BIT(QSPI_CR_EN_POS)
+
+/****************** Bit definition for QSPI_DRIR register ************************/
+
+#define	QSPI_DRIR_DCYC_POSS	24U 
+#define	QSPI_DRIR_DCYC_POSE	28U 
+#define	QSPI_DRIR_DCYC_MSK	BITS(QSPI_DRIR_DCYC_POSS,QSPI_DRIR_DCYC_POSE)
+
+#define	QSPI_DRIR_MBEN_POS	20U 
+#define	QSPI_DRIR_MBEN_MSK	BIT(QSPI_DRIR_MBEN_POS)
+
+#define	QSPI_DRIR_DMODE_POSS	16U 
+#define	QSPI_DRIR_DMODE_POSE	17U 
+#define	QSPI_DRIR_DMODE_MSK	BITS(QSPI_DRIR_DMODE_POSS,QSPI_DRIR_DMODE_POSE)
+
+#define	QSPI_DRIR_ADMODE_POSS	12U 
+#define	QSPI_DRIR_ADMODE_POSE	13U 
+#define	QSPI_DRIR_ADMODE_MSK	BITS(QSPI_DRIR_ADMODE_POSS,QSPI_DRIR_ADMODE_POSE)
+
+#define	QSPI_DRIR_DDRM_POS	10U 
+#define	QSPI_DRIR_DDRM_MSK	BIT(QSPI_DRIR_DDRM_POS)
+
+#define	QSPI_DRIR_IMODE_POSS	8U 
+#define	QSPI_DRIR_IMODE_POSE	9U 
+#define	QSPI_DRIR_IMODE_MSK	BITS(QSPI_DRIR_IMODE_POSS,QSPI_DRIR_IMODE_POSE)
+
+#define	QSPI_DRIR_RINST_POSS	0U 
+#define	QSPI_DRIR_RINST_POSE	7U 
+#define	QSPI_DRIR_RINST_MSK	BITS(QSPI_DRIR_RINST_POSS,QSPI_DRIR_RINST_POSE)
+
+/****************** Bit definition for QSPI_DWIR register ************************/
+
+#define	QSPI_DWIR_DCYC_POSS	24U 
+#define	QSPI_DWIR_DCYC_POSE	28U 
+#define	QSPI_DWIR_DCYC_MSK	BITS(QSPI_DWIR_DCYC_POSS,QSPI_DWIR_DCYC_POSE)
+
+#define	QSPI_DWIR_DMODE_POSS	16U 
+#define	QSPI_DWIR_DMODE_POSE	17U 
+#define	QSPI_DWIR_DMODE_MSK	BITS(QSPI_DWIR_DMODE_POSS,QSPI_DWIR_DMODE_POSE)
+
+#define	QSPI_DWIR_ADMODE_POSS	12U 
+#define	QSPI_DWIR_ADMODE_POSE	13U 
+#define	QSPI_DWIR_ADMODE_MSK	BITS(QSPI_DWIR_ADMODE_POSS,QSPI_DWIR_ADMODE_POSE)
+
+#define	QSPI_DWIR_WELD_POS	8U 
+#define	QSPI_DWIR_WELD_MSK	BIT(QSPI_DWIR_WELD_POS)
+
+#define	QSPI_DWIR_WINST_POSS	0U 
+#define	QSPI_DWIR_WINST_POSE	7U 
+#define	QSPI_DWIR_WINST_MSK	BITS(QSPI_DWIR_WINST_POSS,QSPI_DWIR_WINST_POSE)
+
+/****************** Bit definition for QSPI_DDLR register ************************/
+
+#define	QSPI_DDLR_CSDA_POSS	24U 
+#define	QSPI_DDLR_CSDA_POSE	31U 
+#define	QSPI_DDLR_CSDA_MSK	BITS(QSPI_DDLR_CSDA_POSS,QSPI_DDLR_CSDA_POSE)
+
+#define	QSPI_DDLR_CSDADS_POSS	16U 
+#define	QSPI_DDLR_CSDADS_POSE	23U 
+#define	QSPI_DDLR_CSDADS_MSK	BITS(QSPI_DDLR_CSDADS_POSS,QSPI_DDLR_CSDADS_POSE)
+
+#define	QSPI_DDLR_CSEOT_POSS	8U 
+#define	QSPI_DDLR_CSEOT_POSE	15U 
+#define	QSPI_DDLR_CSEOT_MSK	BITS(QSPI_DDLR_CSEOT_POSS,QSPI_DDLR_CSEOT_POSE)
+
+#define	QSPI_DDLR_CSSOT_POSS	0U 
+#define	QSPI_DDLR_CSSOT_POSE	7U 
+#define	QSPI_DDLR_CSSOT_MSK	BITS(QSPI_DDLR_CSSOT_POSS,QSPI_DDLR_CSSOT_POSE)
+
+/****************** Bit definition for QSPI_RDCR register ************************/
+
+#define	QSPI_RDCR_DLYT_POSS	16U 
+#define	QSPI_RDCR_DLYT_POSE	19U 
+#define	QSPI_RDCR_DLYT_MSK	BITS(QSPI_RDCR_DLYT_POSS,QSPI_RDCR_DLYT_POSE)
+
+#define	QSPI_RDCR_SMES_POS	5U 
+#define	QSPI_RDCR_SMES_MSK	BIT(QSPI_RDCR_SMES_POS)
+
+#define	QSPI_RDCR_DLYR_POSS	1U 
+#define	QSPI_RDCR_DLYR_POSE	4U 
+#define	QSPI_RDCR_DLYR_MSK	BITS(QSPI_RDCR_DLYR_POSS,QSPI_RDCR_DLYR_POSE)
+
+#define	QSPI_RDCR_BYLPC_POS	0U 
+#define	QSPI_RDCR_BYLPC_MSK	BIT(QSPI_RDCR_BYLPC_POS)
+
+/****************** Bit definition for QSPI_DSCR register ************************/
+
+#define	QSPI_DSCR_CS3SIZE_POSS	27U 
+#define	QSPI_DSCR_CS3SIZE_POSE	28U 
+#define	QSPI_DSCR_CS3SIZE_MSK	BITS(QSPI_DSCR_CS3SIZE_POSS,QSPI_DSCR_CS3SIZE_POSE)
+
+#define	QSPI_DSCR_CS2SIZE_POSS	25U 
+#define	QSPI_DSCR_CS2SIZE_POSE	26U 
+#define	QSPI_DSCR_CS2SIZE_MSK	BITS(QSPI_DSCR_CS2SIZE_POSS,QSPI_DSCR_CS2SIZE_POSE)
+
+#define	QSPI_DSCR_CS1SIZE_POSS	23U 
+#define	QSPI_DSCR_CS1SIZE_POSE	24U 
+#define	QSPI_DSCR_CS1SIZE_MSK	BITS(QSPI_DSCR_CS1SIZE_POSS,QSPI_DSCR_CS1SIZE_POSE)
+
+#define	QSPI_DSCR_CS0SIZE_POSS	21U 
+#define	QSPI_DSCR_CS0SIZE_POSE	22U 
+#define	QSPI_DSCR_CS0SIZE_MSK	BITS(QSPI_DSCR_CS0SIZE_POSS,QSPI_DSCR_CS0SIZE_POSE)
+
+#define	QSPI_DSCR_BKSIZE_POSS	16U 
+#define	QSPI_DSCR_BKSIZE_POSE	20U 
+#define	QSPI_DSCR_BKSIZE_MSK	BITS(QSPI_DSCR_BKSIZE_POSS,QSPI_DSCR_BKSIZE_POSE)
+
+#define	QSPI_DSCR_PASIZE_POSS	4U 
+#define	QSPI_DSCR_PASIZE_POSE	15U 
+#define	QSPI_DSCR_PASIZE_MSK	BITS(QSPI_DSCR_PASIZE_POSS,QSPI_DSCR_PASIZE_POSE)
+
+#define	QSPI_DSCR_ADSIZE_POSS	0U 
+#define	QSPI_DSCR_ADSIZE_POSE	3U 
+#define	QSPI_DSCR_ADSIZE_MSK	BITS(QSPI_DSCR_ADSIZE_POSS,QSPI_DSCR_ADSIZE_POSE)
+
+/****************** Bit definition for QSPI_SPR register ************************/
+
+#define	QSPI_SPR_SRAMPS_POSS	0U 
+#define	QSPI_SPR_SRAMPS_POSE	7U 
+#define	QSPI_SPR_SRAMPS_MSK	BITS(QSPI_SPR_SRAMPS_POSS,QSPI_SPR_SRAMPS_POSE)
+
+/****************** Bit definition for QSPI_IATR register ************************/
+
+#define	QSPI_IATR_INDTAD_POSS	0U 
+#define	QSPI_IATR_INDTAD_POSE	31U 
+#define	QSPI_IATR_INDTAD_MSK	BITS(QSPI_IATR_INDTAD_POSS,QSPI_IATR_INDTAD_POSE)
+
+/****************** Bit definition for QSPI_DMACR register ************************/
+
+#define	QSPI_DMACR_BNUMB_POSS	8U 
+#define	QSPI_DMACR_BNUMB_POSE	11U 
+#define	QSPI_DMACR_BNUMB_MSK	BITS(QSPI_DMACR_BNUMB_POSS,QSPI_DMACR_BNUMB_POSE)
+
+#define	QSPI_DMACR_SNUMB_POSS	0U 
+#define	QSPI_DMACR_SNUMB_POSE	3U 
+#define	QSPI_DMACR_SNUMB_MSK	BITS(QSPI_DMACR_SNUMB_POSS,QSPI_DMACR_SNUMB_POSE)
+
+/****************** Bit definition for QSPI_RAR register ************************/
+
+#define	QSPI_RAR_READDR_POSS	0U 
+#define	QSPI_RAR_READDR_POSE	31U 
+#define	QSPI_RAR_READDR_MSK	BITS(QSPI_RAR_READDR_POSS,QSPI_RAR_READDR_POSE)
+
+/****************** Bit definition for QSPI_MBR register ************************/
+
+#define	QSPI_MBR_MODEB_POSS	0U 
+#define	QSPI_MBR_MODEB_POSE	7U 
+#define	QSPI_MBR_MODEB_MSK	BITS(QSPI_MBR_MODEB_POSS,QSPI_MBR_MODEB_POSE)
+
+/****************** Bit definition for QSPI_SFLR register ************************/
+
+#define	QSPI_SFLR_INDWSFL_POSS	16U 
+#define	QSPI_SFLR_INDWSFL_POSE	23U 
+#define	QSPI_SFLR_INDWSFL_MSK	BITS(QSPI_SFLR_INDWSFL_POSS,QSPI_SFLR_INDWSFL_POSE)
+
+#define	QSPI_SFLR_INDRSFL_POSS	0U 
+#define	QSPI_SFLR_INDRSFL_POSE	7U 
+#define	QSPI_SFLR_INDRSFL_MSK	BITS(QSPI_SFLR_INDRSFL_POSS,QSPI_SFLR_INDRSFL_POSE)
+
+/****************** Bit definition for QSPI_TXHR register ************************/
+
+#define	QSPI_TXHR_TXTH_POSS	0U 
+#define	QSPI_TXHR_TXTH_POSE	4U 
+#define	QSPI_TXHR_TXTH_MSK	BITS(QSPI_TXHR_TXTH_POSS,QSPI_TXHR_TXTH_POSE)
+
+/****************** Bit definition for QSPI_RXHR register ************************/
+
+#define	QSPI_RXHR_RXTH_POSS	0U 
+#define	QSPI_RXHR_RXTH_POSE	4U 
+#define	QSPI_RXHR_RXTH_MSK	BITS(QSPI_RXHR_RXTH_POSS,QSPI_RXHR_RXTH_POSE)
+
+/****************** Bit definition for QSPI_WCR register ************************/
+
+#define	QSPI_WCR_PREPD_POSS	24U 
+#define	QSPI_WCR_PREPD_POSE	31U 
+#define	QSPI_WCR_PREPD_MSK	BITS(QSPI_WCR_PREPD_POSS,QSPI_WCR_PREPD_POSE)
+
+#define	QSPI_WCR_PCNT_POSS	16U 
+#define	QSPI_WCR_PCNT_POSE	23U 
+#define	QSPI_WCR_PCNT_MSK	BITS(QSPI_WCR_PCNT_POSS,QSPI_WCR_PCNT_POSE)
+
+#define	QSPI_WCR_PDIS_POS	14U 
+#define	QSPI_WCR_PDIS_MSK	BIT(QSPI_WCR_PDIS_POS)
+
+#define	QSPI_WCR_PPLT_POS	13U 
+#define	QSPI_WCR_PPLT_MSK	BIT(QSPI_WCR_PPLT_POS)
+
+#define	QSPI_WCR_PBIND_POSS	8U 
+#define	QSPI_WCR_PBIND_POSE	10U 
+#define	QSPI_WCR_PBIND_MSK	BITS(QSPI_WCR_PBIND_POSS,QSPI_WCR_PBIND_POSE)
+
+#define	QSPI_WCR_OPCODE_POSS	0U 
+#define	QSPI_WCR_OPCODE_POSE	7U 
+#define	QSPI_WCR_OPCODE_MSK	BITS(QSPI_WCR_OPCODE_POSS,QSPI_WCR_OPCODE_POSE)
+
+/****************** Bit definition for QSPI_PER register ************************/
+
+#define	QSPI_PER_PCYCN_POSS	0U 
+#define	QSPI_PER_PCYCN_POSE	31U 
+#define	QSPI_PER_PCYCN_MSK	BITS(QSPI_PER_PCYCN_POSS,QSPI_PER_PCYCN_POSE)
+
+/****************** Bit definition for QSPI_IFR register ************************/
+
+#define	QSPI_IFR_POLLF_POS	13U 
+#define	QSPI_IFR_POLLF_MSK	BIT(QSPI_IFR_POLLF_POS)
+
+#define	QSPI_IFR_INDRSFF_POS	12U 
+#define	QSPI_IFR_INDRSFF_MSK	BIT(QSPI_IFR_INDRSFF_POS)
+
+#define	QSPI_IFR_SRFFF_POS	11U 
+#define	QSPI_IFR_SRFFF_MSK	BIT(QSPI_IFR_SRFFF_POS)
+
+#define	QSPI_IFR_SRFNEF_POS	10U 
+#define	QSPI_IFR_SRFNEF_MSK	BIT(QSPI_IFR_SRFNEF_POS)
+
+#define	QSPI_IFR_STFFF_POS	9U 
+#define	QSPI_IFR_STFFF_MSK	BIT(QSPI_IFR_STFFF_POS)
+
+#define	QSPI_IFR_STFNFF_POS	8U 
+#define	QSPI_IFR_STFNFF_MSK	BIT(QSPI_IFR_STFNFF_POS)
+
+#define	QSPI_IFR_ROVF_POS	7U 
+#define	QSPI_IFR_ROVF_MSK	BIT(QSPI_IFR_ROVF_POS)
+
+#define	QSPI_IFR_INDTWF_POS	6U 
+#define	QSPI_IFR_INDTWF_MSK	BIT(QSPI_IFR_INDTWF_POS)
+
+#define	QSPI_IFR_AHBAEF_POS	5U 
+#define	QSPI_IFR_AHBAEF_MSK	BIT(QSPI_IFR_AHBAEF_POS)
+
+#define	QSPI_IFR_WPAF_POS	4U 
+#define	QSPI_IFR_WPAF_MSK	BIT(QSPI_IFR_WPAF_POS)
+
+#define	QSPI_IFR_INDRRF_POS	3U 
+#define	QSPI_IFR_INDRRF_MSK	BIT(QSPI_IFR_INDRRF_POS)
+
+#define	QSPI_IFR_INDCF_POS	2U 
+#define	QSPI_IFR_INDCF_MSK	BIT(QSPI_IFR_INDCF_POS)
+
+#define	QSPI_IFR_UDFF_POS	1U 
+#define	QSPI_IFR_UDFF_MSK	BIT(QSPI_IFR_UDFF_POS)
+
+#define	QSPI_IFR_MODFF_POS	0U 
+#define	QSPI_IFR_MODFF_MSK	BIT(QSPI_IFR_MODFF_POS)
+
+/****************** Bit definition for QSPI_IMR register ************************/
+
+#define	QSPI_IMR_INTEN_POSS	0U 
+#define	QSPI_IMR_INTEN_POSE	13U 
+#define	QSPI_IMR_INTEN_MSK	BITS(QSPI_IMR_INTEN_POSS,QSPI_IMR_INTEN_POSE)
+
+/****************** Bit definition for QSPI_WPLR register ************************/
+
+#define	QSPI_WPLR_LBLKNUM_POSS	0U 
+#define	QSPI_WPLR_LBLKNUM_POSE	31U 
+#define	QSPI_WPLR_LBLKNUM_MSK	BITS(QSPI_WPLR_LBLKNUM_POSS,QSPI_WPLR_LBLKNUM_POSE)
+
+/****************** Bit definition for QSPI_WPHR register ************************/
+
+#define	QSPI_WPHR_HBLKNUM_POSS	0U 
+#define	QSPI_WPHR_HBLKNUM_POSE	31U 
+#define	QSPI_WPHR_HBLKNUM_MSK	BITS(QSPI_WPHR_HBLKNUM_POSS,QSPI_WPHR_HBLKNUM_POSE)
+
+/****************** Bit definition for QSPI_WPCR register ************************/
+
+#define	QSPI_WPCR_WPEN_POS	1U 
+#define	QSPI_WPCR_WPEN_MSK	BIT(QSPI_WPCR_WPEN_POS)
+
+#define	QSPI_WPCR_WPINV_POS	0U 
+#define	QSPI_WPCR_WPINV_MSK	BIT(QSPI_WPCR_WPINV_POS)
+
+/****************** Bit definition for QSPI_IRTR register ************************/
+
+#define	QSPI_IRTR_INDRNUM_POSS	6U 
+#define	QSPI_IRTR_INDRNUM_POSE	7U 
+#define	QSPI_IRTR_INDRNUM_MSK	BITS(QSPI_IRTR_INDRNUM_POSS,QSPI_IRTR_INDRNUM_POSE)
+
+#define	QSPI_IRTR_RDCS_POS	5U 
+#define	QSPI_IRTR_RDCS_MSK	BIT(QSPI_IRTR_RDCS_POS)
+
+#define	QSPI_IRTR_RDQS_POS	4U 
+#define	QSPI_IRTR_RDQS_MSK	BIT(QSPI_IRTR_RDQS_POS)
+
+#define	QSPI_IRTR_SRAMFS_POS	3U 
+#define	QSPI_IRTR_SRAMFS_MSK	BIT(QSPI_IRTR_SRAMFS_POS)
+
+#define	QSPI_IRTR_RDPS_POS	2U 
+#define	QSPI_IRTR_RDPS_MSK	BIT(QSPI_IRTR_RDPS_POS)
+
+#define	QSPI_IRTR_RDDIS_POS	1U 
+#define	QSPI_IRTR_RDDIS_MSK	BIT(QSPI_IRTR_RDDIS_POS)
+
+#define	QSPI_IRTR_RDST_POS	0U 
+#define	QSPI_IRTR_RDST_MSK	BIT(QSPI_IRTR_RDST_POS)
+
+/****************** Bit definition for QSPI_IRTWR register ************************/
+
+#define	QSPI_IRTWR_VAULE_POSS	0U 
+#define	QSPI_IRTWR_VAULE_POSE	31U 
+#define	QSPI_IRTWR_VAULE_MSK	BITS(QSPI_IRTWR_VAULE_POSS,QSPI_IRTWR_VAULE_POSE)
+
+/****************** Bit definition for QSPI_IRTSAR register ************************/
+
+#define	QSPI_IRTSAR_ADDR_POSS	0U 
+#define	QSPI_IRTSAR_ADDR_POSE	31U 
+#define	QSPI_IRTSAR_ADDR_MSK	BITS(QSPI_IRTSAR_ADDR_POSS,QSPI_IRTSAR_ADDR_POSE)
+
+/****************** Bit definition for QSPI_IRTNR register ************************/
+
+#define	QSPI_IRTNR_NUM_POSS	0U 
+#define	QSPI_IRTNR_NUM_POSE	31U 
+#define	QSPI_IRTNR_NUM_MSK	BITS(QSPI_IRTNR_NUM_POSS,QSPI_IRTNR_NUM_POSE)
+
+/****************** Bit definition for QSPI_IWTR register ************************/
+
+#define	QSPI_IWTR_INDWNUM_POSS	6U 
+#define	QSPI_IWTR_INDWNUM_POSE	7U 
+#define	QSPI_IWTR_INDWNUM_MSK	BITS(QSPI_IWTR_INDWNUM_POSS,QSPI_IWTR_INDWNUM_POSE)
+
+#define	QSPI_IWTR_WRCS_POS	5U 
+#define	QSPI_IWTR_WRCS_MSK	BIT(QSPI_IWTR_WRCS_POS)
+
+#define	QSPI_IWTR_WRQS_POS	4U 
+#define	QSPI_IWTR_WRQS_MSK	BIT(QSPI_IWTR_WRQS_POS)
+
+#define	QSPI_IWTR_WRPS_POS	2U 
+#define	QSPI_IWTR_WRPS_MSK	BIT(QSPI_IWTR_WRPS_POS)
+
+#define	QSPI_IWTR_WRDIS_POS	1U 
+#define	QSPI_IWTR_WRDIS_MSK	BIT(QSPI_IWTR_WRDIS_POS)
+
+#define	QSPI_IWTR_WRST_POS	0U 
+#define	QSPI_IWTR_WRST_MSK	BIT(QSPI_IWTR_WRST_POS)
+
+/****************** Bit definition for QSPI_IWTWR register ************************/
+
+#define	QSPI_IWTWR_VAULE_POSS	0U 
+#define	QSPI_IWTWR_VAULE_POSE	31U 
+#define	QSPI_IWTWR_VAULE_MSK	BITS(QSPI_IWTWR_VAULE_POSS,QSPI_IWTWR_VAULE_POSE)
+
+/****************** Bit definition for QSPI_IWTSAR register ************************/
+
+#define	QSPI_IWTSAR_ADDR_POSS	0U 
+#define	QSPI_IWTSAR_ADDR_POSE	31U 
+#define	QSPI_IWTSAR_ADDR_MSK	BITS(QSPI_IWTSAR_ADDR_POSS,QSPI_IWTSAR_ADDR_POSE)
+
+/****************** Bit definition for QSPI_IWTNR register ************************/
+
+#define	QSPI_IWTNR_NUM_POSS	0U 
+#define	QSPI_IWTNR_NUM_POSE	31U 
+#define	QSPI_IWTNR_NUM_MSK	BITS(QSPI_IWTNR_NUM_POSS,QSPI_IWTNR_NUM_POSE)
+
+/****************** Bit definition for QSPI_ITARR register ************************/
+
+#define	QSPI_ITARR_RNGW_POSS	0U 
+#define	QSPI_ITARR_RNGW_POSE	3U 
+#define	QSPI_ITARR_RNGW_MSK	BITS(QSPI_ITARR_RNGW_POSS,QSPI_ITARR_RNGW_POSE)
+
+/****************** Bit definition for QSPI_FCR register ************************/
+
+#define	QSPI_FCR_OPCODE_POSS	24U 
+#define	QSPI_FCR_OPCODE_POSE	31U 
+#define	QSPI_FCR_OPCODE_MSK	BITS(QSPI_FCR_OPCODE_POSS,QSPI_FCR_OPCODE_POSE)
+
+#define	QSPI_FCR_RDEN_POS	23U 
+#define	QSPI_FCR_RDEN_MSK	BIT(QSPI_FCR_RDEN_POS)
+
+#define	QSPI_FCR_RDNUM_POSS	20U 
+#define	QSPI_FCR_RDNUM_POSE	22U 
+#define	QSPI_FCR_RDNUM_MSK	BITS(QSPI_FCR_RDNUM_POSS,QSPI_FCR_RDNUM_POSE)
+
+#define	QSPI_FCR_ADDREN_POS	19U 
+#define	QSPI_FCR_ADDREN_MSK	BIT(QSPI_FCR_ADDREN_POS)
+
+#define	QSPI_FCR_MODBEN_POS	18U 
+#define	QSPI_FCR_MODBEN_MSK	BIT(QSPI_FCR_MODBEN_POS)
+
+#define	QSPI_FCR_ADNUM_POSS	16U 
+#define	QSPI_FCR_ADNUM_POSE	17U 
+#define	QSPI_FCR_ADNUM_MSK	BITS(QSPI_FCR_ADNUM_POSS,QSPI_FCR_ADNUM_POSE)
+
+#define	QSPI_FCR_WREN_POS	15U 
+#define	QSPI_FCR_WREN_MSK	BIT(QSPI_FCR_WREN_POS)
+
+#define	QSPI_FCR_WDNUM_POSS	12U 
+#define	QSPI_FCR_WDNUM_POSE	14U 
+#define	QSPI_FCR_WDNUM_MSK	BITS(QSPI_FCR_WDNUM_POSS,QSPI_FCR_WDNUM_POSE)
+
+#define	QSPI_FCR_DUMNUM_POSS	7U 
+#define	QSPI_FCR_DUMNUM_POSE	11U 
+#define	QSPI_FCR_DUMNUM_MSK	BITS(QSPI_FCR_DUMNUM_POSS,QSPI_FCR_DUMNUM_POSE)
+
+#define	QSPI_FCR_CMDS_POS	1U 
+#define	QSPI_FCR_CMDS_MSK	BIT(QSPI_FCR_CMDS_POS)
+
+#define	QSPI_FCR_CMDT_POS	0U 
+#define	QSPI_FCR_CMDT_MSK	BIT(QSPI_FCR_CMDT_POS)
+
+/****************** Bit definition for QSPI_FCAR register ************************/
+
+#define	QSPI_FCAR_CMDADR_POSS	0U 
+#define	QSPI_FCAR_CMDADR_POSE	31U 
+#define	QSPI_FCAR_CMDADR_MSK	BITS(QSPI_FCAR_CMDADR_POSS,QSPI_FCAR_CMDADR_POSE)
+
+/****************** Bit definition for QSPI_FCRLR register ************************/
+
+#define	QSPI_FCRLR_CMDDL_POSS	0U 
+#define	QSPI_FCRLR_CMDDL_POSE	31U 
+#define	QSPI_FCRLR_CMDDL_MSK	BITS(QSPI_FCRLR_CMDDL_POSS,QSPI_FCRLR_CMDDL_POSE)
+
+/****************** Bit definition for QSPI_FCRHR register ************************/
+
+#define	QSPI_FCRHR_CMDDH_POSS	0U 
+#define	QSPI_FCRHR_CMDDH_POSE	31U 
+#define	QSPI_FCRHR_CMDDH_MSK	BITS(QSPI_FCRHR_CMDDH_POSS,QSPI_FCRHR_CMDDH_POSE)
+
+/****************** Bit definition for QSPI_FCWLR register ************************/
+
+#define	QSPI_FCWLR_CMDDL_POSS	0U 
+#define	QSPI_FCWLR_CMDDL_POSE	31U 
+#define	QSPI_FCWLR_CMDDL_MSK	BITS(QSPI_FCWLR_CMDDL_POSS,QSPI_FCWLR_CMDDL_POSE)
+
+/****************** Bit definition for QSPI_FCWHR register ************************/
+
+#define	QSPI_FCWHR_CMDDH_POSS	0U 
+#define	QSPI_FCWHR_CMDDH_POSE	31U 
+#define	QSPI_FCWHR_CMDDH_MSK	BITS(QSPI_FCWHR_CMDDH_POSS,QSPI_FCWHR_CMDDH_POSE)
+
+/****************** Bit definition for QSPI_PFSR register ************************/
+
+#define	QSPI_PFSR_PSV_POS	8U 
+#define	QSPI_PFSR_PSV_MSK	BIT(QSPI_PFSR_PSV_POS)
+
+#define	QSPI_PFSR_FLSS_POSS	0U 
+#define	QSPI_PFSR_FLSS_POSE	7U 
+#define	QSPI_PFSR_FLSS_MSK	BITS(QSPI_PFSR_FLSS_POSS,QSPI_PFSR_FLSS_POSE)
+
+/****************** Bit definition for QSPI_MIDR register ************************/
+
+#define	QSPI_MIDR_ID1_POSS	24U 
+#define	QSPI_MIDR_ID1_POSE	31U 
+#define	QSPI_MIDR_ID1_MSK	BITS(QSPI_MIDR_ID1_POSS,QSPI_MIDR_ID1_POSE)
+
+#define	QSPI_MIDR_ID0_POSS	0U 
+#define	QSPI_MIDR_ID0_POSE	23U 
+#define	QSPI_MIDR_ID0_MSK	BITS(QSPI_MIDR_ID0_POSS,QSPI_MIDR_ID0_POSE)
+
+typedef struct
+{
+	__IO uint32_t CR;
+	__IO uint32_t DRIR;
+	__IO uint32_t DWIR;
+	__IO uint32_t DDLR;
+	__IO uint32_t RDCR;
+	__IO uint32_t DSCR;
+	__IO uint32_t SPR;
+	__IO uint32_t IATR;
+	__IO uint32_t DMACR;
+	__IO uint32_t RAR;
+	__IO uint32_t MBR;
+	__I uint32_t SFLR;
+	__IO uint32_t TXHR;
+	__IO uint32_t RXHR;
+	__IO uint32_t WCR;
+	__IO uint32_t PER;
+	__IO uint32_t IFR;
+	__IO uint32_t IMR;
+	uint32_t RESERVED0[2] ;
+	__IO uint32_t WPLR;
+	__IO uint32_t WPHR;
+	__IO uint32_t WPCR;
+	uint32_t RESERVED1 ;
+	__O uint32_t IRTR;
+	__IO uint32_t IRTWR;
+	__IO uint32_t IRTSAR;
+	__IO uint32_t IRTNR;
+	__O uint32_t IWTR;
+	__IO uint32_t IWTWR;
+	__IO uint32_t IWTSAR;
+	__IO uint32_t IWTNR;
+	__IO uint32_t ITARR;
+	uint32_t RESERVED2[3] ;
+	__O uint32_t FCR;
+	__IO uint32_t FCAR;
+	uint32_t RESERVED3[2] ;
+	__I uint32_t FCRLR;
+	__I uint32_t FCRHR;
+	__IO uint32_t FCWLR;
+	__IO uint32_t FCWHR;
+	__I uint32_t PFSR;
+	uint32_t RESERVED4[18] ;
+	__I uint32_t MIDR;
+} QSPI_TypeDef;
+
+
+
+
+
+#endif

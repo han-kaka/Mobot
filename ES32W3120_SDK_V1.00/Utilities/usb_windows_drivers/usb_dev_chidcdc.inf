@@ -1,0 +1,66 @@
+;
+;   EastSoft USB CDC (serial) driver installation file.
+;
+;   Copyright (C) 2018 Shanghai Eastsoft Microelectronics Co., Ltd. ALL rights reserved.
+;
+
+[Version]
+Signature="$Windows NT$"
+Class=Ports
+ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318}
+Provider=%MFGNAME%
+CatalogFile=usb_dev_chidcdc.cat
+LayoutFile=layout.inf
+DriverVer=12/13/2018,0.0.1
+
+[SourceDisksNames]
+1=%DISKNAME%,,,
+
+[SourceDisksFiles]
+%12%\usbser.sys=1
+
+[Manufacturer]
+%MFGNAME%=VirComDevice,NT,NTamd64
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[VirComDevice.NT]
+;
+; This entry is for the composite hid/serial device usb_dev_chidcdc.  Notice
+; that the value is MI_01 because the serial device is on interface 0.
+;
+%DESCRIPTION%=DriverInstall,USB\Vid_30CC&Pid_0009&MI_00
+
+[VirComDevice.NTamd64]
+;
+; This entry is for the composite hid/serial device usb_dev_chidcdc.  Notice
+; that the value is MI_01 because the serial device is on interface 0.
+;
+%DESCRIPTION%=DriverInstall,USB\Vid_30CC&Pid_0009&MI_00
+
+[DriverInstall.NT]
+Include=mdmcpq.inf
+CopyFiles=FakeModemCopyFileSection
+AddReg=DriverInstall.NT.AddReg
+
+[DriverInstall.NT.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,usbser.sys
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+
+[DriverInstall.NT.Services]
+AddService=usbser, 0x00000002, DriverServiceInst
+
+[DriverServiceInst]
+DisplayName=%SERVICE%
+ServiceType=1
+StartType=3
+ErrorControl=1
+ServiceBinary=%12%\usbser.sys
+
+[Strings]
+MFGNAME       = "Shanghai Eastsoft Microelectronics Co., Ltd."
+DISKNAME      = "ES32 Composite Serial Device"
+DESCRIPTION   = "ES32 USB HID/CDC Serial Port"
+SERVICE       = "ES32 USB CDC serial port"
