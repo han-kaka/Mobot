@@ -173,7 +173,7 @@ void ald_gpio_init_default(GPIO_TypeDef *GPIOx, uint16_t pin)
     init.mode  = GPIO_MODE_OUTPUT;
     init.odos  = GPIO_PUSH_PULL;
     init.pupd  = GPIO_PUSH_UP;
-    init.odrv = MD_GPIO_OUT_DRIVE_NORMAL;
+    init.odrv = GPIO_OUT_DRIVE_NORMAL;
     init.flt   = GPIO_FILTER_DISABLE;
     init.type  = GPIO_TYPE_CMOS;
     init.func  = GPIO_FUNC_1;

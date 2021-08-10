@@ -138,9 +138,9 @@ typedef enum
   */
 typedef enum
 {
-    MD_GPIO_OUT_DRIVE_NORMAL = 0x0U,    /**< Normal current flow */
-    MD_GPIO_OUT_DRIVE_STRONG = 0x1U,    /**< Strong current flow */
-} md_gpio_out_drive_t;
+    GPIO_OUT_DRIVE_NORMAL = 0x0U,    /**< Normal current flow */
+    GPIO_OUT_DRIVE_STRONG = 0x1U,    /**< Strong current flow */
+} gpio_out_drive_t;
 
 /**
   * @brief GPIO filter
@@ -187,7 +187,7 @@ typedef struct
                      This parameter can be a value of @ref gpio_odos_t */
     gpio_push_t pupd;   /**< Specifies the Pull-up or Pull-Down for the selected pins.
                      This parameter can be a value of @ref gpio_push_t */
-    md_gpio_out_drive_t odrv;   /**< Specifies the output driver for the selected pins.
+    gpio_out_drive_t odrv;   /**< Specifies the output driver for the selected pins.
                      This parameter can be a value of @ref md_gpio_out_drive_t */
     gpio_filter_t flt;  /**< Specifies the input filter for the selected pins.
                      This parameter can be a value of @ref gpio_filter_t */
@@ -249,8 +249,8 @@ typedef struct
                              ((x) == GPIO_PUSH_UP)   || \
                              ((x) == GPIO_PUSH_DOWN) || \
                              ((x) == GPIO_PUSH_UP_DOWN))
-#define IS_GPIO_ODRV(x)     (((x) == MD_GPIO_OUT_DRIVE_NORMAL) || \
-                             ((x) == MD_GPIO_OUT_DRIVE_STRONG))
+#define IS_GPIO_ODRV(x)     (((x) == GPIO_OUT_DRIVE_NORMAL) || \
+                             ((x) == GPIO_OUT_DRIVE_STRONG))
 #define IS_GPIO_FLT(x)      (((x) == GPIO_FILTER_DISABLE) || \
                              ((x) == GPIO_FILTER_ENABLE))
 #define IS_GPIO_TYPE(x)     (((x) == GPIO_TYPE_TTL) || \

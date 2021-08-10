@@ -92,7 +92,7 @@ static void led_init(void)
 	x.mode = GPIO_MODE_OUTPUT;
 	x.odos = GPIO_PUSH_PULL;
 	x.pupd = GPIO_PUSH_UP;
-	x.odrv = MD_GPIO_OUT_DRIVE_NORMAL;
+	x.odrv = GPIO_OUT_DRIVE_NORMAL;
 	x.flt  = GPIO_FILTER_DISABLE;
 	x.type = GPIO_TYPE_CMOS;
 	x.func = GPIO_FUNC_1;
@@ -121,7 +121,7 @@ static void button_init(void)
 	x.mode = GPIO_MODE_INPUT;
 	x.odos = GPIO_PUSH_PULL;
 	x.pupd = GPIO_PUSH_DOWN;
-	x.odrv = MD_GPIO_OUT_DRIVE_NORMAL;
+	x.odrv = GPIO_OUT_DRIVE_NORMAL;
 	x.flt  = GPIO_FILTER_DISABLE;
 	x.type = GPIO_TYPE_CMOS;
 	x.func = GPIO_FUNC_1;
@@ -243,8 +243,8 @@ int main(void)
 		
 	update_sys_clk();
 	log_init();
-	led_init();
-	button_init();
+//	led_init();
+//	button_init();
 	esble_init_set();
 //	esapp_init();
 		

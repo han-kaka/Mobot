@@ -45,18 +45,18 @@
 /* #define MD_ECC */
 #define MD_GPIO
 /* #define MD_HASH */
-/* #define MD_I2C */
+#define MD_I2C
 /* #define MD_IWDT */
 /* #define MD_LPTIM */
 /* #define MD_MSC */
 #define MD_PIS
 /* #define MD_PMU */
 /* #define MD_RMU */
-/* #define MD_SPI */
+#define MD_SPI
 #define MD_SYSCFG
 /* #define MD_TIMER */
 /* #define MD_TRNG */
-/* #define MD_UART */
+#define MD_UART
 #define MD_UTILS
 /* #define MD_WWDT */
 /* #define MD_TYPE */
