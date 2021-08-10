@@ -22,8 +22,9 @@ Note		:	None
 
 #include "global.h"
 
-#include "task_common.h"
+#include "bsp_system.h"
 
+#include "task_common.h"
 
 uint8_t button_value = 1;
 
@@ -98,9 +99,6 @@ static void led_init(void)
 
 	ald_gpio_init(GPIOA, GPIO_PIN_7 | GPIO_PIN_8 | GPIO_PIN_6 | GPIO_PIN_11, &x);
 	ald_gpio_write_pin(GPIOA, GPIO_PIN_7 | GPIO_PIN_8 | GPIO_PIN_6 | GPIO_PIN_11, 1);
-
-	ald_gpio_init(GPIOB, GPIO_PIN_3, &x);
-	ald_gpio_write_pin(GPIOB, GPIO_PIN_3, 1);	
 }
 
 /*************************************************************************************************/
@@ -250,8 +248,10 @@ int main(void)
 	esble_init_set();
 //	esapp_init();
 		
-	/* Initialize pin */ 
-//  uart_pin_init();
+	//初始化IO
+	initial_board();
+	//开启一些初始任务
+	start_initial_task();
 
 	while(1)
 	{
