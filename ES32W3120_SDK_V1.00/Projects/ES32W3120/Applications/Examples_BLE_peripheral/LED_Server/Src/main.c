@@ -98,6 +98,9 @@ static void led_init(void)
 
 	ald_gpio_init(GPIOA, GPIO_PIN_7 | GPIO_PIN_8 | GPIO_PIN_6 | GPIO_PIN_11, &x);
 	ald_gpio_write_pin(GPIOA, GPIO_PIN_7 | GPIO_PIN_8 | GPIO_PIN_6 | GPIO_PIN_11, 1);
+
+	ald_gpio_init(GPIOB, GPIO_PIN_3, &x);
+	ald_gpio_write_pin(GPIOB, GPIO_PIN_3, 1);	
 }
 
 /*************************************************************************************************/

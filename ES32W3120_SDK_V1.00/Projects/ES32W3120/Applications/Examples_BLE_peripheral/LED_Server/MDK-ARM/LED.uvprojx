@@ -10,8 +10,7 @@
       <TargetName>target</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060528::V5.06 update 5 (build 528)::ARMCC</pCCUsed>
-      <uAC6>0</uAC6>
+      <pCCUsed>5060422::V5.06 update 4 (build 422)::ARMCC</pCCUsed>
       <TargetOption>
         <TargetCommonOption>
           <Device>ESW3120NQ</Device>
@@ -89,7 +88,7 @@
             <nStopA1X>0</nStopA1X>
             <nStopA2X>0</nStopA2X>
           </AfterMake>
-          <SelectedForBatchBuild>0</SelectedForBatchBuild>
+          <SelectedForBatchBuild>1</SelectedForBatchBuild>
           <SVCSIdString></SVCSIdString>
         </TargetCommonOption>
         <CommonProperty>
@@ -336,7 +335,7 @@
               <MiscControls>--c99</MiscControls>
               <Define>USE_ASSERT</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\..\..\..\..\Drivers\CMSIS\Include;..\..\..\..\..\..\Drivers\CMSIS\Device\EastSoft\ES32W3120\Include;..\..\..\..\..\..\Drivers\CMSIS\Device\EastSoft\ES32W3120\Include\ES32W3120;..\..\..\..\..\..\Drivers\ALD\ES32W3120\Include;..\Src;..\Inc;..\..\..\..\..\..\Middlewares\EastSoft\BLE5.0\Interface;..\..\..\..\..\..\Middlewares\EastSoft\BLE5.0\lib\Include;..\..\..\..\..\..\Middlewares\EastSoft\BLE5.0\Profile\led;..\..\..\..\..\..\Middlewares\Third_Party\RTT;..\..\..\..\..\..\Middlewares\EastSoft\BLE5.0\Log\Include;..\..\..\..\..\..\Drivers\MD\ES32W3120\Include</IncludePath>
+              <IncludePath>..\..\..\..\..\..\Drivers\CMSIS\Include;..\..\..\..\..\..\Drivers\CMSIS\Device\EastSoft\ES32W3120\Include;..\..\..\..\..\..\Drivers\CMSIS\Device\EastSoft\ES32W3120\Include\ES32W3120;..\..\..\..\..\..\Drivers\ALD\ES32W3120\Include;..\Src;..\Inc;..\..\..\..\..\..\Middlewares\EastSoft\BLE5.0\Interface;..\..\..\..\..\..\Middlewares\EastSoft\BLE5.0\lib\Include;..\..\..\..\..\..\Middlewares\EastSoft\BLE5.0\Profile\led;..\..\..\..\..\..\Middlewares\Third_Party\RTT;..\..\..\..\..\..\Middlewares\EastSoft\BLE5.0\Log\Include;..\..\..\..\..\..\Drivers\MD\ES32W3120\Include;..\app;..\bsp;..\task</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -400,10 +399,120 @@
               <FileType>1</FileType>
               <FilePath>..\Src\main.c</FilePath>
             </File>
+            <File>
+              <FileName>global.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Src\global.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_common.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\app\app_common.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_common.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\app\app_common.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>bsp</GroupName>
+        </Group>
+        <Group>
+          <GroupName>task</GroupName>
+          <Files>
+            <File>
+              <FileName>task_bluetooth.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\task\task_bluetooth.c</FilePath>
+            </File>
+            <File>
+              <FileName>task_bluetooth.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\task\task_bluetooth.h</FilePath>
+            </File>
+            <File>
+              <FileName>task_common.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\task\task_common.c</FilePath>
+            </File>
+            <File>
+              <FileName>task_common.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\task\task_common.h</FilePath>
+            </File>
+            <File>
+              <FileName>task_communicate.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\task\task_communicate.c</FilePath>
+            </File>
+            <File>
+              <FileName>task_communicate.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\task\task_communicate.h</FilePath>
+            </File>
+            <File>
+              <FileName>task_control.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\task\task_control.c</FilePath>
+            </File>
+            <File>
+              <FileName>task_control.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\task\task_control.h</FilePath>
+            </File>
+            <File>
+              <FileName>task_measure.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\task\task_measure.c</FilePath>
+            </File>
+            <File>
+              <FileName>task_measure.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\task\task_measure.h</FilePath>
+            </File>
+            <File>
+              <FileName>task_mem_read.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\task\task_mem_read.c</FilePath>
+            </File>
+            <File>
+              <FileName>task_mem_read.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\task\task_mem_read.h</FilePath>
+            </File>
+            <File>
+              <FileName>task_mem_write.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\task\task_mem_write.c</FilePath>
+            </File>
+            <File>
+              <FileName>task_mem_write.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\task\task_mem_write.h</FilePath>
+            </File>
+            <File>
+              <FileName>task_other.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\task\task_other.c</FilePath>
+            </File>
+            <File>
+              <FileName>task_other.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\task\task_other.h</FilePath>
+            </File>
+            <File>
+              <FileName>task_safeguard.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\task\task_safeguard.c</FilePath>
+            </File>
+            <File>
+              <FileName>task_safeguard.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\task\task_safeguard.h</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>profile</GroupName>
@@ -625,7 +734,6 @@
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <pCCUsed>5060528::V5.06 update 5 (build 528)::ARMCC</pCCUsed>
-      <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>ESW3120NQ</Device>
@@ -1082,10 +1190,120 @@
               <FileType>1</FileType>
               <FilePath>..\Src\main.c</FilePath>
             </File>
+            <File>
+              <FileName>global.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Src\global.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_common.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\app\app_common.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_common.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\app\app_common.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>bsp</GroupName>
+        </Group>
+        <Group>
+          <GroupName>task</GroupName>
+          <Files>
+            <File>
+              <FileName>task_bluetooth.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\task\task_bluetooth.c</FilePath>
+            </File>
+            <File>
+              <FileName>task_bluetooth.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\task\task_bluetooth.h</FilePath>
+            </File>
+            <File>
+              <FileName>task_common.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\task\task_common.c</FilePath>
+            </File>
+            <File>
+              <FileName>task_common.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\task\task_common.h</FilePath>
+            </File>
+            <File>
+              <FileName>task_communicate.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\task\task_communicate.c</FilePath>
+            </File>
+            <File>
+              <FileName>task_communicate.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\task\task_communicate.h</FilePath>
+            </File>
+            <File>
+              <FileName>task_control.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\task\task_control.c</FilePath>
+            </File>
+            <File>
+              <FileName>task_control.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\task\task_control.h</FilePath>
+            </File>
+            <File>
+              <FileName>task_measure.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\task\task_measure.c</FilePath>
+            </File>
+            <File>
+              <FileName>task_measure.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\task\task_measure.h</FilePath>
+            </File>
+            <File>
+              <FileName>task_mem_read.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\task\task_mem_read.c</FilePath>
+            </File>
+            <File>
+              <FileName>task_mem_read.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\task\task_mem_read.h</FilePath>
+            </File>
+            <File>
+              <FileName>task_mem_write.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\task\task_mem_write.c</FilePath>
+            </File>
+            <File>
+              <FileName>task_mem_write.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\task\task_mem_write.h</FilePath>
+            </File>
+            <File>
+              <FileName>task_other.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\task\task_other.c</FilePath>
+            </File>
+            <File>
+              <FileName>task_other.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\task\task_other.h</FilePath>
+            </File>
+            <File>
+              <FileName>task_safeguard.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\task\task_safeguard.c</FilePath>
+            </File>
+            <File>
+              <FileName>task_safeguard.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\task\task_safeguard.h</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>profile</GroupName>
