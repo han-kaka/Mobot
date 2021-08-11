@@ -464,6 +464,16 @@
               <FileType>5</FileType>
               <FilePath>..\bsp\bsp_dx_bt24_t.h</FilePath>
             </File>
+            <File>
+              <FileName>bsp_flash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\bsp\bsp_flash.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_flash.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\bsp\bsp_flash.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -633,6 +643,16 @@
               <FileName>md_dma.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Include\md_dma.h</FilePath>
+            </File>
+            <File>
+              <FileName>md_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Source\md_spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>md_spi.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Include\md_spi.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1332,6 +1352,16 @@
               <FileType>5</FileType>
               <FilePath>..\bsp\bsp_dx_bt24_t.h</FilePath>
             </File>
+            <File>
+              <FileName>bsp_flash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\bsp\bsp_flash.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_flash.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\bsp\bsp_flash.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1705,6 +1735,16 @@
               <FileName>md_dma.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Include\md_dma.h</FilePath>
+            </File>
+            <File>
+              <FileName>md_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Source\md_spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>md_spi.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Include\md_spi.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -1,5 +1,6 @@
 #include "bsp_mp6050.h"
 #include "bsp_dx_bt24_t.h"
+#include "bsp_flash.h"
 #include "bsp_system.h"
 
 void initial_board(void)
@@ -39,6 +40,7 @@ void start_initial_task(void)
 	
 		i2c_init();
 		uart_init();
+		spi_init();
 }
 
 

@@ -13,6 +13,7 @@ uint8_t g_send_buf[20] = {0x01U, 0x12U, 0x23U, 0x34U, 0x45U, 0x56U, 0x67U, 0x78U
 uint8_t g_complete;
 static md_dma_descriptor_t g_dma0_ctrl_base[2] __attribute__((aligned(512)));
 static md_dma_config_t g_dma_rx_config, g_dma_tx_config;
+	
 /* Private Constants --------------------------------------------------------- */
 
 /* Private function prototypes ----------------------------------------------- */

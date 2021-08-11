@@ -5,10 +5,10 @@
 /* Private Variables --------------------------------------------------------- */
 
 /* Public Variables ---------------------------------------------------------- */
-
 static md_dma_descriptor_t g_dma0_ctrl_base[2] __attribute__((aligned(512)));
 uint8_t g_rx_buf[32];
 static md_dma_config_t g_dma_tx_config, g_dma_rx_config;
+
 /* Private Constants --------------------------------------------------------- */
 
 /* Private function prototypes ----------------------------------------------- */
