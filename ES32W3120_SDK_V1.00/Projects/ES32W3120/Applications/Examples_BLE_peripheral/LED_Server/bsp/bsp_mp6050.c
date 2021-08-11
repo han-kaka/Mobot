@@ -1,13 +1,23 @@
 #include "bsp_mp6050.h"
 
+/* Private Macros ------------------------------------------------------------ */
+
+/* Private Variables --------------------------------------------------------- */
+
+/* Public Variables ---------------------------------------------------------- */
 md_i2c_init_t g_md_i2c;
 
 uint8_t g_recv_buf[20U];
 uint8_t g_send_buf[20] = {0x01U, 0x12U, 0x23U, 0x34U, 0x45U, 0x56U, 0x67U, 0x78U, 0x89U, 0x9AU, 0x01U, 0x12U, 0x23U, 0x34U, 0x45U, 0x56U, 0x67U, 0x78U, 0x89U, 0x9AU};
 
 uint8_t g_complete;
-md_dma_descriptor_t g_dma0_ctrl_base[2] __attribute__((aligned(512)));
-md_dma_config_t g_dma_rx_config, g_dma_tx_config;
+static md_dma_descriptor_t g_dma0_ctrl_base[2] __attribute__((aligned(512)));
+static md_dma_config_t g_dma_rx_config, g_dma_tx_config;
+/* Private Constants --------------------------------------------------------- */
+
+/* Private function prototypes ----------------------------------------------- */
+
+/* Private Function ---------------------------------------------------------- */
 	
 /**
   * @brief  Initializate pin of i2c module.
@@ -106,19 +116,6 @@ static void dma_recv_rx(void)
 
 void i2c_init(void)
 {
-		/* Configure system clock */
-    md_cmu_clock_config_default();
-    /* Initialize SysTick Interrupt */
-    md_init_1ms_tick();
-
-    md_cmu_pll1_config(32);
-    md_cmu_clock_config(MD_CMU_CLOCK_PLL1, 48000000);
-
-    /* Enable ALL peripheral */
-    SYSCFG_UNLOCK();
-    md_cmu_enable_perh_all();
-    SYSCFG_LOCK();
-
     i2c_pin_init();
 	
 		md_i2c_struct_init(&g_md_i2c);
@@ -133,9 +130,6 @@ void i2c_init(void)
     md_i2c_init(I2C1, &g_md_i2c);
     md_i2c_set_receive_fifo_reset(I2C1);
     md_i2c_set_transmit_fifo_reset(I2C1);
-		
-		NVIC_SetPriority(DMA_IRQn, 0);
-    NVIC_EnableIRQ(DMA_IRQn);
 		
     dma_send_tx();
     dma_recv_rx();

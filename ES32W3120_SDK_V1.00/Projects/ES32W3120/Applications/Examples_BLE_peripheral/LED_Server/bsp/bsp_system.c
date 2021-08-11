@@ -1,6 +1,6 @@
-#include "bsp_system.h"
 #include "bsp_mp6050.h"
-
+#include "bsp_dx_bt24_t.h"
+#include "bsp_system.h"
 
 void initial_board(void)
 { 
@@ -21,9 +21,24 @@ void initial_board(void)
 
 void start_initial_task(void)
 {  
-		i2c_init();
-	
+		/* Configure system clock */
+    md_cmu_clock_config_default();
+    /* Initialize SysTick Interrupt */
+    md_init_1ms_tick();
 
+    md_cmu_pll1_config(32);
+    md_cmu_clock_config(MD_CMU_CLOCK_PLL1, 48000000);
+
+    /* Enable ALL peripheral */
+    SYSCFG_UNLOCK();
+    md_cmu_enable_perh_all();
+    SYSCFG_LOCK();	
+	
+		NVIC_SetPriority(DMA_IRQn, 0);
+    NVIC_EnableIRQ(DMA_IRQn);
+	
+		i2c_init();
+		uart_init();
 }
 
 

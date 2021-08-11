@@ -34,9 +34,6 @@ uint32_t const * const app_ram_start = &Image$$RW_IRAM1$$Base;
 
 uint8_t send_flag = 0;
 
-//uart_handle_t g_h_uart;
-//uint8_t g_rx_buf[32];
-
 #define APP_RAM_START  (uint32_t)app_ram_start
 #define SYSCNTL_FREQ			(48000000UL)
 
@@ -184,34 +181,6 @@ static void esble_init_set(void)
         }
     }
 }
-
-//void uart_pin_init(void)
-//{
-//    gpio_init_t x;
-//    memset(&x, 0x00, sizeof(gpio_init_t));
-
-//    /* Initialize tx pin: PA2 */
-//    x.mode = GPIO_MODE_OUTPUT;
-//    x.odos = GPIO_PUSH_PULL;
-//    x.pupd = GPIO_PUSH_UP;
-//    x.odrv = MD_GPIO_OUT_DRIVE_NORMAL;
-//    x.flt  = GPIO_FILTER_DISABLE;
-//    x.type = GPIO_TYPE_TTL;
-//    x.func = GPIO_FUNC_2;
-//    ald_gpio_init(GPIOA, GPIO_PIN_2, &x);
-
-//    /* Initialize rx pin: PA3 */
-//    x.mode = GPIO_MODE_INPUT;
-//    x.odos = GPIO_PUSH_PULL;
-//    x.pupd = GPIO_PUSH_UP;
-//    x.odrv = MD_GPIO_OUT_DRIVE_NORMAL;
-//    x.flt  = GPIO_FILTER_DISABLE;
-//    x.type = GPIO_TYPE_TTL;
-//    x.func = GPIO_FUNC_2;
-//    ald_gpio_init(GPIOA, GPIO_PIN_3, &x);
-
-//    return;
-//}
 
 /*************************************************************************************************/
 /*

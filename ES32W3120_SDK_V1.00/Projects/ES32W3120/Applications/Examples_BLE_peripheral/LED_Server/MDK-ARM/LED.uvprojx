@@ -414,10 +414,57 @@
               <FileType>1</FileType>
               <FilePath>..\app\app_common.c</FilePath>
             </File>
+            <File>
+              <FileName>irq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\irq.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>bsp</GroupName>
+          <Files>
+            <File>
+              <FileName>bsp_system.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\bsp\bsp_system.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_system.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\bsp\bsp_system.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_common.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\bsp\bsp_common.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_common.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\bsp\bsp_common.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_mp6050.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\bsp\bsp_mp6050.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_mp6050.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\bsp\bsp_mp6050.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_dx_bt24_t.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\bsp\bsp_dx_bt24_t.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_dx_bt24_t.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\bsp\bsp_dx_bt24_t.h</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>task</GroupName>
@@ -556,6 +603,36 @@
               <FileName>md_cmu.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Source\md_cmu.c</FilePath>
+            </File>
+            <File>
+              <FileName>md_utils.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Source\md_utils.c</FilePath>
+            </File>
+            <File>
+              <FileName>md_utils.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Include\md_utils.h</FilePath>
+            </File>
+            <File>
+              <FileName>md_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Source\md_i2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>md_i2c.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Include\md_i2c.h</FilePath>
+            </File>
+            <File>
+              <FileName>md_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Source\md_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>md_dma.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Include\md_dma.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1205,10 +1282,57 @@
               <FileType>1</FileType>
               <FilePath>..\app\app_common.c</FilePath>
             </File>
+            <File>
+              <FileName>irq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\irq.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>bsp</GroupName>
+          <Files>
+            <File>
+              <FileName>bsp_system.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\bsp\bsp_system.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_system.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\bsp\bsp_system.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_common.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\bsp\bsp_common.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_common.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\bsp\bsp_common.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_mp6050.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\bsp\bsp_mp6050.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_mp6050.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\bsp\bsp_mp6050.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_dx_bt24_t.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\bsp\bsp_dx_bt24_t.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_dx_bt24_t.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\bsp\bsp_dx_bt24_t.h</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>task</GroupName>
@@ -1551,6 +1675,36 @@
               <FileName>md_cmu.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Source\md_cmu.c</FilePath>
+            </File>
+            <File>
+              <FileName>md_utils.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Source\md_utils.c</FilePath>
+            </File>
+            <File>
+              <FileName>md_utils.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Include\md_utils.h</FilePath>
+            </File>
+            <File>
+              <FileName>md_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Source\md_i2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>md_i2c.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Include\md_i2c.h</FilePath>
+            </File>
+            <File>
+              <FileName>md_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Source\md_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>md_dma.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Include\md_dma.h</FilePath>
             </File>
           </Files>
         </Group>
