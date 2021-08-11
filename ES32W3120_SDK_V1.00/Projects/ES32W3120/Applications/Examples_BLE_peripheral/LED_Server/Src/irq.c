@@ -34,21 +34,15 @@
 #include "bsp_mp6050.h"
 #include "md_utils.h"
 
-/* Private Macros ------------------------------------------------------------ */
-
-/* Private Variables --------------------------------------------------------- */
-
-/* Public Variables ---------------------------------------------------------- */
-
-/* Private Constants --------------------------------------------------------- */
-
-/* Private function prototypes ----------------------------------------------- */
-
-/* Private Function ---------------------------------------------------------- */
-
+/* Exported Types ------------------------------------------------------------ */
+/* Exported Macros ----------------------------------------------------------- */
 /* Exported Variables -------------------------------------------------------- */
 extern uint8_t g_complete;
 extern md_dma_config_t g_dma_rx_config, g_dma_tx_config;
+extern uint32_t g_adc_result;
+
+/* Exported Constants -------------------------------------------------------- */
+/* Exported Functions -------------------------------------------------------- */
 
 /** @addtogroup Projects_Examples_ALD
   * @{
@@ -150,6 +144,23 @@ void SysTick_Handler(void)
 {
     md_inc_tick();
     return;
+}
+
+/**
+  * @brief ADC_IRQHandler.
+  * @param none
+  * @retval none
+  */
+
+void ADC_IRQHandler(void)
+{
+    if (md_adc_get_stat_nche(ADC) == 1)
+    {
+        md_adc_set_clr_nche(ADC);
+        md_adc_set_clr_nchs(ADC);
+
+        g_adc_result = md_adc_get_normal_channel_val(ADC) * 3320 / 4096;
+    }
 }
 
 /**
