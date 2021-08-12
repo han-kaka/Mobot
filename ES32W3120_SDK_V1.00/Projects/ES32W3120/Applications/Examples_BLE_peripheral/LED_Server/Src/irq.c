@@ -40,6 +40,8 @@
 /* Exported Variables -------------------------------------------------------- */
 extern i2c_handle_t g_h_i2c;
 extern uart_handle_t g_h_uart;
+extern adc_handle_t g_h_adc;
+extern uint32_t g_adc_result;
 
 /* Exported Constants -------------------------------------------------------- */
 
@@ -136,6 +138,18 @@ void SysTick_Handler(void)
 {
     ald_inc_tick();
     return;
+}
+
+/**
+  * @brief ADC_IRQHandler.
+  * @param none
+  * @retval none
+  */
+void ADC_IRQHandler(void)
+{
+    /* Handle adc interrupt */
+    ald_adc_irq_handler(&g_h_adc);
+    g_adc_result = ald_adc_normal_get_value(&g_h_adc) * 3320 / 4096;
 }
 
 /**
