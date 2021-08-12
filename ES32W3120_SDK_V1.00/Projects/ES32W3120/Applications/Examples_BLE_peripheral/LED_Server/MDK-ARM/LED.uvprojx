@@ -474,6 +474,26 @@
               <FileType>5</FileType>
               <FilePath>..\bsp\bsp_flash.h</FilePath>
             </File>
+            <File>
+              <FileName>bsp_power.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\bsp\bsp_power.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_power.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\bsp\bsp_power.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_time.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\bsp\bsp_time.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_time.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\bsp\bsp_time.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -653,6 +673,26 @@
               <FileName>md_spi.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Include\md_spi.h</FilePath>
+            </File>
+            <File>
+              <FileName>md_adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Source\md_adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>md_adc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Include\md_adc.h</FilePath>
+            </File>
+            <File>
+              <FileName>md_timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Source\md_timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>md_timer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Include\md_timer.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1362,6 +1402,26 @@
               <FileType>5</FileType>
               <FilePath>..\bsp\bsp_flash.h</FilePath>
             </File>
+            <File>
+              <FileName>bsp_power.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\bsp\bsp_power.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_power.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\bsp\bsp_power.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_time.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\bsp\bsp_time.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_time.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\bsp\bsp_time.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1745,6 +1805,26 @@
               <FileName>md_spi.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Include\md_spi.h</FilePath>
+            </File>
+            <File>
+              <FileName>md_adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Source\md_adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>md_adc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Include\md_adc.h</FilePath>
+            </File>
+            <File>
+              <FileName>md_timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Source\md_timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>md_timer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Include\md_timer.h</FilePath>
             </File>
           </Files>
         </Group>

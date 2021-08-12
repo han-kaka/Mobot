@@ -7,7 +7,7 @@
 #define FLASH_ERASE         0x20
 #define FLASH_PROGRAM       0x02
 #define FLASH_READ          0x03
-#define FLASH_ID            0x9F
+#define FLASH_ID            0x90
 #define FLASH_STATUS        0x05
 
 /* Private Macros ------------------------------------------------------------ */
@@ -79,11 +79,18 @@ static uint32_t flash_read_id(void)
 
     FLASH_CS_CLR(); /* 片选拉低，选中Flash */
 
+		for(i = 0; i < 4; i++)
+		{
+				ES_LOG_PRINT("%2x", flash_id[i]);
+		}
+		ES_LOG_PRINT("\n");
+		
     for (i = 0; i < sizeof(flash_id); i++)
     {
         if (md_spi_send_byte_fast(&s_gs_spi, flash_id[i]) != MD_OK)
         {
             FLASH_CS_SET();     /* 片选拉高，释放Flash */
+						ES_LOG_PRINT("md_spi_send_byte_fast err\n");
             return MD_ERROR;
         }
     }
@@ -95,6 +102,7 @@ static uint32_t flash_read_id(void)
         if (r_flag != MD_OK)
         {
             FLASH_CS_SET();
+						ES_LOG_PRINT("md_spi_recv_byte_fast err\n");
             return MD_ERROR;
         }
     }
@@ -125,7 +133,7 @@ void spi_init(void)
     md_spi_init(&s_gs_spi);                    /* 按照参数初始化SPI外设 */
 	
 		id = flash_read_id();
-		ES_LOG_PRINT("\r\nManufacturer ID is %02x & Device ID is %02x %02x\r\n", (uint8_t)(id >> 16), (uint8_t)(id >> 8), (uint8_t)id);
+		ES_LOG_PRINT("Manufacturer ID is %02x & Device ID is %02x %02x\n", (uint8_t)(id >> 16), (uint8_t)(id >> 8), (uint8_t)id);
 }
 
 /**

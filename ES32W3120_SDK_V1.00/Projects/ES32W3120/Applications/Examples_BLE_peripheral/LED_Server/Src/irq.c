@@ -164,6 +164,22 @@ void ADC_IRQHandler(void)
 }
 
 /**
+  * @brief  GP16C4T1 UPDATE IRQ handler
+  * @retval None
+  */
+void AD16C4T0_UP_IRQHandler(void)
+{
+    /* update interrupt service program */
+    if (md_timer_get_update_valid_interrupt_flag_uei(AD16C4T0) == 1)
+    {
+        md_timer_clear_update_interrupt_flag_ueic(AD16C4T0);
+
+    }
+
+    return;
+}
+
+/**
   * @brief  I2C Event IRQ handler
   * @retval None
   */

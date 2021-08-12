@@ -36,7 +36,7 @@ static void i2c_pin_init(void)
 		x.odrv  = MD_GPIO_OUT_DRIVE_NORMAL;
 		x.flt   = MD_GPIO_FILTER_DISABLE;
 		x.type  = MD_GPIO_TYPE_CMOS;
-		x.func  = MD_GPIO_FUNC_4;
+		x.func  = MD_GPIO_FUNC_3;
 		md_gpio_init(I2C1_SCL_PORT, I2C1_SCL_PIN, &x);
 
 		/* Initialize sda pin */
@@ -46,7 +46,7 @@ static void i2c_pin_init(void)
 		x.odrv  = MD_GPIO_OUT_DRIVE_NORMAL;
 		x.flt   = MD_GPIO_FILTER_DISABLE;
 		x.type  = MD_GPIO_TYPE_CMOS;
-		x.func  = MD_GPIO_FUNC_4;
+		x.func  = MD_GPIO_FUNC_3;
 		md_gpio_init(I2C1_SDA_PORT, I2C1_SDA_PIN, &x);
 
 		return;

@@ -54,7 +54,7 @@
 /* #define MD_RMU */
 #define MD_SPI
 #define MD_SYSCFG
-/* #define MD_TIMER */
+#define MD_TIMER
 /* #define MD_TRNG */
 #define MD_UART
 #define MD_UTILS
