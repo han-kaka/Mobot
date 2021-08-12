@@ -42,6 +42,7 @@ extern i2c_handle_t g_h_i2c;
 extern uart_handle_t g_h_uart;
 extern adc_handle_t g_h_adc;
 extern uint32_t g_adc_result;
+extern timer_handle_t g_ad16c4t_init;
 
 /* Exported Constants -------------------------------------------------------- */
 
@@ -200,6 +201,15 @@ void UART0_IRQHandler(void)
     ald_uart_irq_handler(&g_h_uart);
 
     return;
+}
+
+/**
+  * @brief  AD16C4T1_UP Handler
+  * @retval None
+  */
+void AD16C4T1_UP_IRQHandler(void)
+{
+    ald_timer_irq_handler(&g_ad16c4t_init);
 }
 
 /**
