@@ -30,6 +30,7 @@
 //#define ALD_PMU
 //#define ALD_I2S
 //#define ALD_RTC
+#define ALD_UART
 #define ALD_TIMER
 #define ALD_ADC
 //#define ALD_SPI
@@ -55,7 +56,6 @@
 //#define ALD_USB
 #define UTILS
 #define ALD_SYSCFG
-#define ALD_CMU
 
 
 #ifdef  UTILS

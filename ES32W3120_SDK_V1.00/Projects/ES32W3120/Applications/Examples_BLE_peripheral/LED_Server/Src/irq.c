@@ -38,8 +38,8 @@
 /* Exported Macros ----------------------------------------------------------- */
 
 /* Exported Variables -------------------------------------------------------- */
-
 extern i2c_handle_t g_h_i2c;
+extern uart_handle_t g_h_uart;
 
 /* Exported Constants -------------------------------------------------------- */
 
@@ -165,6 +165,17 @@ void I2C1_EV_IRQHandler(void)
 void I2C1_ERR_IRQHandler(void)
 {
     ald_i2c_er_irq_handler(&g_h_i2c);
+}
+
+/**
+  * @brief  Uart0 handler
+  * @retval None
+  */
+void UART0_IRQHandler(void)
+{
+    ald_uart_irq_handler(&g_h_uart);
+
+    return;
 }
 
 /**
