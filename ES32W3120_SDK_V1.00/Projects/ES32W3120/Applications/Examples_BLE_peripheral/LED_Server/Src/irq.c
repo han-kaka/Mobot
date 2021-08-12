@@ -138,6 +138,16 @@ void SysTick_Handler(void)
     return;
 }
 
+/**
+  * @brief  CMU IRQ#6 handler
+  * @retval None
+  */
+void CMU_Handler(void)
+{
+    ald_cmu_irq_handler();
+    return;
+}
+
 #ifdef ALD_DMA
 /**
   * @brief  DMA IRQ#66 handler

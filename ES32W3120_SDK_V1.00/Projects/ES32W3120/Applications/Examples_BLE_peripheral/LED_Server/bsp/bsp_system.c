@@ -67,7 +67,7 @@ void start_initial_task(void)
 	
 		i2c_init();
 		uart_init();
-//		spi_init();
+		spi_init();
 //		adc_init();
 //	
 //		time_init();	

@@ -33,7 +33,7 @@
 #define ALD_UART
 #define ALD_TIMER
 #define ALD_ADC
-//#define ALD_SPI
+#define ALD_SPI
 #define ALD_CMU
 //#define ALD_RMU
 //#define ALD_WDT

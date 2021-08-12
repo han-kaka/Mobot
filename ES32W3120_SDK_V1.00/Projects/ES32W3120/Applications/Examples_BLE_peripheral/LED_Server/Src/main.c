@@ -112,29 +112,29 @@ static void led_init(void)
 /*************************************************************************************************/
 static void button_init(void)
 {
-	gpio_init_t x;
-	exti_init_t exti;
+		gpio_init_t x;
+		exti_init_t exti;
 
-	x.mode = GPIO_MODE_INPUT;
-	x.odos = GPIO_PUSH_PULL;
-	x.pupd = GPIO_PUSH_DOWN;
-	x.odrv = GPIO_OUT_DRIVE_NORMAL;
-	x.flt  = GPIO_FILTER_DISABLE;
-	x.type = GPIO_TYPE_CMOS;
-	x.func = GPIO_FUNC_1;
-	ald_gpio_init(GPIOB, GPIO_PIN_12, &x);
+		x.mode = GPIO_MODE_INPUT;
+		x.odos = GPIO_PUSH_PULL;
+		x.pupd = GPIO_PUSH_DOWN;
+		x.odrv = GPIO_OUT_DRIVE_NORMAL;
+		x.flt  = GPIO_FILTER_DISABLE;
+		x.type = GPIO_TYPE_CMOS;
+		x.func = GPIO_FUNC_1;
+		ald_gpio_init(GPIOB, GPIO_PIN_12, &x);
 
-	exti.filter      = ENABLE;
-	exti.cks         = EXTI_FILTER_CLOCK_10K;
-	exti.filter_time = 10;
-	ald_gpio_exti_init(GPIOB, GPIO_PIN_12, &exti);
+		exti.filter      = ENABLE;
+		exti.cks         = EXTI_FILTER_CLOCK_10K;
+		exti.filter_time = 10;
+		ald_gpio_exti_init(GPIOB, GPIO_PIN_12, &exti);
 
-	/* Clear interrupt flag */
-	ald_gpio_exti_clear_flag_status(GPIO_PIN_12);
-	/* Configure interrupt */
-	ald_gpio_exti_interrupt_config(GPIO_PIN_12, EXTI_TRIGGER_BOTH_EDGE, ENABLE);
+		/* Clear interrupt flag */
+		ald_gpio_exti_clear_flag_status(GPIO_PIN_12);
+		/* Configure interrupt */
+		ald_gpio_exti_interrupt_config(GPIO_PIN_12, EXTI_TRIGGER_BOTH_EDGE, ENABLE);
 
-	__NVIC_EnableIRQ(EXTI12_IRQn);
+		__NVIC_EnableIRQ(EXTI12_IRQn);
 }
 
 static void esble_ram_start_get(uint32_t * p_app_ram_start)
