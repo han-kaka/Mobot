@@ -65,11 +65,11 @@ void start_initial_task(void)
     ald_cmu_perh_clock_config(CMU_PERH_ALL, ENABLE);
 	
 		i2c_init();
-		uart_init();
-		spi_init();
-		adc_init();
-	
-		time_init();	
+//		uart_init();
+//		spi_init();
+//		adc_init();
+//	
+//		time_init();	
 }
 
 
