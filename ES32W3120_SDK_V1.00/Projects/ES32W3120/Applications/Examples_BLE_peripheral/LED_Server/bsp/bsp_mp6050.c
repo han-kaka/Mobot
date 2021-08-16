@@ -3,6 +3,8 @@
 #define MPU_WRITE   0x68 << 1//MPU6050Ð´µØÖ·
 #define MPU_READ    ((0x68 << 1) + 1)//MPU6050¶ÁµØÖ·
 
+#define MPU_ADDR    0x68
+
 /* Private Macros ------------------------------------------------------------ */
 
 /* Private Variables --------------------------------------------------------- */
@@ -31,6 +33,15 @@ i2c_handle_t g_h_i2c;
 
 /* Private Function ---------------------------------------------------------- */
 	
+/**
+  * @brief  delay some time.
+  * @retval None.
+  */
+static void delay(int i)
+{
+    while (i--) ;
+}
+
 /**
   * @brief  Initializate pin of i2c module.
   * @retval None
@@ -62,30 +73,79 @@ static void i2c_pin_init(void)
 
 //		return;
 
-    gpio_init_t x;
-    memset(&x, 0, sizeof(gpio_init_t));
+//    gpio_init_t x;
+//    memset(&x, 0, sizeof(gpio_init_t));
 
-    /* Initialize scl pin */
-    x.mode = GPIO_MODE_OUTPUT;
-    x.odos = GPIO_OPEN_DRAIN;
-    x.pupd = GPIO_PUSH_UP;
-    x.odrv = GPIO_OUT_DRIVE_NORMAL;
-    x.flt  = GPIO_FILTER_DISABLE;
-    x.type = GPIO_TYPE_TTL;
-    x.func = GPIO_FUNC_3;
-    ald_gpio_init(I2C1_SCL_PORT, I2C1_SCL_PIN, &x);
+//    /* Initialize scl pin */
+//    x.mode = GPIO_MODE_OUTPUT;
+//    x.odos = GPIO_OPEN_DRAIN;
+//    x.pupd = GPIO_PUSH_UP;
+//    x.odrv = GPIO_OUT_DRIVE_NORMAL;
+//    x.flt  = GPIO_FILTER_DISABLE;
+//    x.type = GPIO_TYPE_TTL;
+//    x.func = GPIO_FUNC_3;
+//    ald_gpio_init(I2C1_SCL_PORT, I2C1_SCL_PIN, &x);
 
-    /* Initialize sda pin */
-    x.mode = GPIO_MODE_OUTPUT;
-    x.odos = GPIO_OPEN_DRAIN;
-    x.pupd = GPIO_PUSH_UP;
-    x.odrv = GPIO_OUT_DRIVE_NORMAL;
-    x.flt  = GPIO_FILTER_DISABLE;
-    x.type = GPIO_TYPE_TTL;
-    x.func = GPIO_FUNC_3;
-    ald_gpio_init(I2C1_SDA_PORT, I2C1_SDA_PIN, &x);
+//    /* Initialize sda pin */
+//    x.mode = GPIO_MODE_OUTPUT;
+//    x.odos = GPIO_OPEN_DRAIN;
+//    x.pupd = GPIO_PUSH_UP;
+//    x.odrv = GPIO_OUT_DRIVE_NORMAL;
+//    x.flt  = GPIO_FILTER_DISABLE;
+//    x.type = GPIO_TYPE_TTL;
+//    x.func = GPIO_FUNC_3;
+//    ald_gpio_init(I2C1_SDA_PORT, I2C1_SDA_PIN, &x);
 
-    return;
+//    return;
+
+//    gpio_init_t x;
+//    memset(&x, 0, sizeof(gpio_init_t));
+
+//    /* Initialize scl pin */
+//    x.mode = GPIO_MODE_OUTPUT;
+//    x.odos = GPIO_OPEN_DRAIN;
+//    x.pupd = GPIO_PUSH_UP;
+//    x.odrv = GPIO_OUT_DRIVE_NORMAL;
+//    x.flt  = GPIO_FILTER_DISABLE;
+//    x.type = GPIO_TYPE_TTL;
+//    x.func = GPIO_FUNC_4;
+//    ald_gpio_init(I2C_SCL_PORT, I2C_SCL_PIN, &x);
+
+//    /* Initialize sda pin */
+//    x.mode = GPIO_MODE_OUTPUT;
+//    x.odos = GPIO_OPEN_DRAIN;
+//    x.pupd = GPIO_PUSH_UP;
+//    x.odrv = GPIO_OUT_DRIVE_NORMAL;
+//    x.flt  = GPIO_FILTER_DISABLE;
+//    x.type = GPIO_TYPE_TTL;
+//    x.func = GPIO_FUNC_4;
+//    ald_gpio_init(I2C_SDA_PORT, I2C_SDA_PIN, &x);
+
+//    return;
+
+		gpio_init_t x;
+
+		x.mode = GPIO_MODE_OUTPUT;
+		x.odos = GPIO_PUSH_PULL;
+		x.pupd = GPIO_PUSH_UP;
+		x.odrv = GPIO_OUT_DRIVE_NORMAL;
+		x.flt  = GPIO_FILTER_DISABLE;
+		x.type = GPIO_TYPE_CMOS;
+		x.func = GPIO_FUNC_1;
+
+		ald_gpio_init(I2C1_SCL_PORT, I2C1_SCL_PIN, &x);
+		ald_gpio_write_pin(I2C1_SCL_PORT, I2C1_SCL_PIN, 1);
+		
+		x.mode = GPIO_MODE_OUTPUT;
+		x.odos = GPIO_PUSH_PULL;
+		x.pupd = GPIO_PUSH_UP;
+		x.odrv = GPIO_OUT_DRIVE_NORMAL;
+		x.flt  = GPIO_FILTER_DISABLE;
+		x.type = GPIO_TYPE_CMOS;
+		x.func = GPIO_FUNC_1;
+
+		ald_gpio_init(I2C1_SDA_PORT, I2C1_SDA_PIN, &x);
+		ald_gpio_write_pin(I2C1_SDA_PORT, I2C1_SDA_PIN, 1);
 }
 
 ///**
@@ -167,6 +227,131 @@ static void master_rx_complete(i2c_handle_t *arg)
     return;
 }
 
+void i2c_start(void)
+{
+		ald_gpio_write_pin(I2C1_SDA_PORT, I2C1_SDA_PIN, 1);
+		ald_gpio_write_pin(I2C1_SCL_PORT, I2C1_SCL_PIN, 1);
+		
+		delay(2);
+	
+		ald_gpio_write_pin(I2C1_SDA_PORT, I2C1_SDA_PIN, 0);
+	
+		delay(2);
+	
+		ald_gpio_write_pin(I2C1_SCL_PORT, I2C1_SCL_PIN, 0);
+}
+
+void IIC_Send_Byte(uint8_t txd)
+{   
+		uint8_t t;
+	
+		ald_gpio_write_pin(I2C1_SCL_PORT, I2C1_SCL_PIN, 0);
+	
+		for(t=0;t<8;t++) {
+				ald_gpio_write_pin(I2C1_SDA_PORT, I2C1_SDA_PIN, (txd&0x80)>>7);
+				txd<<=1;
+				delay(2);
+				ald_gpio_write_pin(I2C1_SCL_PORT, I2C1_SCL_PIN, 1);
+				delay(2);
+				ald_gpio_write_pin(I2C1_SCL_PORT, I2C1_SCL_PIN, 0);
+		}
+} 
+
+uint8_t i2c_wait_ack(void)
+{
+		uint8_t ucErrTime=0;
+	
+		gpio_init_t x;
+		
+		x.mode = GPIO_MODE_INPUT;
+    x.odos = GPIO_PUSH_PULL;
+    x.pupd = GPIO_PUSH_DOWN;
+    x.odrv = GPIO_OUT_DRIVE_NORMAL;
+    x.flt  = GPIO_FILTER_DISABLE;
+    x.type = GPIO_TYPE_CMOS;
+		x.func = GPIO_FUNC_1;
+
+		ald_gpio_init(I2C1_SDA_PORT, I2C1_SDA_PIN, &x);
+		delay(2);
+
+		ald_gpio_write_pin(I2C1_SCL_PORT, I2C1_SCL_PIN, 1);
+		delay(2);
+	
+		while(ald_gpio_read_pin(I2C1_SDA_PORT, I2C1_SDA_PIN)==1) 
+		{
+				ucErrTime++;
+			  if(ucErrTime>250){
+						ES_LOG_PRINT("return 1\n");
+						return 1;
+				}
+		}
+		ald_gpio_write_pin(I2C1_SCL_PORT, I2C1_SCL_PIN, 0);
+		ES_LOG_PRINT("return 0\n");
+		return 0; 
+	
+
+}
+
+void i2c_ack(void)
+{
+//	SCL=0;
+//	SDA_OUT();
+//	SDA_w=0;
+//	delay_us(2);
+//	SCL=1;
+//	delay_us(2);
+//	SCL=0;
+}
+
+void i2c_nack(void)
+{
+//	SCL=0;
+//	SDA_OUT();
+//	SDA_w=1;
+//	delay_us(2);
+//	SCL=1;
+//	delay_us(2);
+//	SCL=0;
+}
+
+uint8_t IIC_Read_Byte(unsigned char ack)
+{
+		unsigned char i,receive=0;
+	
+		gpio_init_t x;
+		
+		x.mode = GPIO_MODE_INPUT;
+    x.odos = GPIO_PUSH_PULL;
+    x.pupd = GPIO_PUSH_DOWN;
+    x.odrv = GPIO_OUT_DRIVE_NORMAL;
+    x.flt  = GPIO_FILTER_DISABLE;
+    x.type = GPIO_TYPE_CMOS;
+		x.func = GPIO_FUNC_1;
+
+		ald_gpio_init(I2C1_SDA_PORT, I2C1_SDA_PIN, &x);
+	
+		for(i=0;i<8;i++)
+		{
+				ald_gpio_write_pin(I2C1_SCL_PORT, I2C1_SCL_PIN, 0);
+				delay(2);
+				ald_gpio_write_pin(I2C1_SCL_PORT, I2C1_SCL_PIN, 1);
+				receive<<=1;
+				if(ald_gpio_read_pin(I2C1_SDA_PORT, I2C1_SDA_PIN)==1){
+						receive++;
+				}
+				delay(2);
+		}
+		
+		if(!ack){
+				i2c_nack();
+		}
+		else{
+				i2c_ack();
+		}
+		ES_LOG_PRINT("data %u\n", receive);
+		return receive;
+}
+
 void i2c_init(void)
 {
 //    i2c_pin_init();
@@ -207,27 +392,26 @@ void i2c_init(void)
 //    md_i2c_set_start(I2C1);
 //    while (!g_complete);
 
-    i2c_pin_init();
-		
-		/* Enable I2c interrupt */
-//    ald_mcu_irq_config(I2C0_EV_IRQn, 3, 3, ENABLE);
-//    ald_mcu_irq_config(I2C0_ERR_IRQn, 3, 3, ENABLE);
-		
-		/* clear i2c_handle_t structure */
-    memset(&g_h_i2c, 0, sizeof(i2c_handle_t));
-		
-		/* Initialize i2c */
-    g_h_i2c.perh = I2C1;
-    g_h_i2c.init.module       = I2C_MODULE_MASTER;
-    g_h_i2c.init.addr_mode    = I2C_ADDR_7BIT;
-    g_h_i2c.init.clk_speed    = 100000;
-    g_h_i2c.init.dual_addr    = I2C_DUALADDR_ENABLE;
-    g_h_i2c.init.general_call = I2C_GENERALCALL_DISABLE;
-    g_h_i2c.init.no_stretch   = I2C_NOSTRETCH_DISABLE;
+//    i2c_pin_init();
+//		
+//		/* Enable I2c interrupt */
+//    ald_mcu_irq_config(I2C1_EV_IRQn, 3, 3, ENABLE);
+//    ald_mcu_irq_config(I2C1_ERR_IRQn, 3, 3, ENABLE);
+//		
+//		/* clear i2c_handle_t structure */
+//    memset(&g_h_i2c, 0, sizeof(i2c_handle_t));
+//    /* Initialize i2c */
+//    g_h_i2c.perh = I2C1;
+//    g_h_i2c.init.module   = I2C_MODULE_MASTER;
+//    g_h_i2c.init.addr_mode    = I2C_ADDR_7BIT;
+//    g_h_i2c.init.clk_speed    = 100000;
+//    g_h_i2c.init.dual_addr    = I2C_DUALADDR_ENABLE;
+//    g_h_i2c.init.general_call = I2C_GENERALCALL_DISABLE;
+//    g_h_i2c.init.no_stretch   = I2C_NOSTRETCH_DISABLE;
 //    g_h_i2c.master_rx_cplt_cbk = master_rx_complete;
 //    g_h_i2c.master_tx_cplt_cbk = master_tx_complete;
-    g_h_i2c.init.own_addr1    = 0xA0;
-    ald_i2c_init(&g_h_i2c);
+//    g_h_i2c.init.own_addr1    = 0xA0;
+//    ald_i2c_init(&g_h_i2c);
 
 //    SET_BIT(g_h_i2c.perh->FCON, I2C_FCON_TXFRST_MSK);
 //    SET_BIT(g_h_i2c.perh->FCON, I2C_FCON_RXFRST_MSK);
@@ -236,14 +420,27 @@ void i2c_init(void)
 		
 //		/* recv data by interrupt */
 //    g_rx_complete = 0;
-//    ald_i2c_master_recv_by_it(&g_h_i2c, MPU_READ, g_recv_buf, g_recv_len);
+//    ald_i2c_master_recv_by_it(&g_h_i2c, 0x2D << 1, g_recv_buf, g_recv_len);
+
 //    while (g_rx_complete != 1);
 
 //    /* send data by interrupt */
 //    g_tx_complete = 0;
-//    ald_i2c_master_send_by_it(&g_h_i2c, MPU_WRITE, g_send_buf, g_send_len);
+//    ald_i2c_master_send_by_it(&g_h_i2c, 0x2D << 1, g_send_buf, g_send_len);
+
 //    while (g_tx_complete != 1);
 
+		i2c_pin_init();
+		
+		uint8_t res;
+		
+		i2c_start(); 
+		IIC_Send_Byte((MPU_ADDR<<1)|0);
+		i2c_wait_ack();
+		IIC_Send_Byte(0x75);
+		i2c_wait_ack();
+		res = IIC_Read_Byte(0);
+		
 }
 
 

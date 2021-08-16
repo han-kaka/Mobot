@@ -213,6 +213,24 @@ void AD16C4T1_UP_IRQHandler(void)
 }
 
 /**
+  * @brief  I2c Event IRQ handler
+  * @retval None
+  */
+void I2C0_EV_IRQHandler(void)
+{
+    ald_i2c_ev_irq_handler(&g_h_i2c);
+}
+
+/**
+  * @brief  I2c Error IRQ handler
+  * @retval None
+  */
+void I2C0_ERR_IRQHandler(void)
+{
+    ald_i2c_er_irq_handler(&g_h_i2c);
+}
+
+/**
   * @}
   */
 /**

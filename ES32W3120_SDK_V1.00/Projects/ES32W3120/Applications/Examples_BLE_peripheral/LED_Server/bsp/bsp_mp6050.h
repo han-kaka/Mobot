@@ -17,6 +17,11 @@
 #define I2C1_SDA_PORT                          GPIOB
 #define I2C1_SDA_PIN                           GPIO_PIN_5      /* I2CSDA:PB5 */
 
+//#define I2C_SCL_PORT    GPIOA
+//#define I2C_SCL_PIN GPIO_PIN_14 
+//#define I2C_SDA_PORT    GPIOA
+//#define I2C_SDA_PIN GPIO_PIN_15
+
 #define SLAVE_ADDR                             0x2D
 
 void i2c_init(void);
