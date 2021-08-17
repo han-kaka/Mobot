@@ -237,21 +237,8 @@ int main(void)
             uint8_t m_temp = ga_TaskMapTable[g_Maintask];
             Task_Struct[m_temp].function(m_temp);
         }
-
-//        if (value != button_value)
-//        {
-//            value = button_value;
-//            if (button_value)
-//            {
-//                ald_gpio_write_pin(GPIOA, GPIO_PIN_6, 1);
-//                esapp_button(0);
-//            }
-//            else
-//            {
-//                ald_gpio_write_pin(GPIOA, GPIO_PIN_6, 0);
-//                esapp_button(1);
-//            }
-//        }
+        
+        
     }
 }
 

@@ -1,4 +1,5 @@
 #include "bsp_dx_bt24_t.h"
+#include "bsp_time.h"
 
 /* Private Macros ------------------------------------------------------------ */
 
@@ -6,14 +7,20 @@
 
 /* Public Variables ---------------------------------------------------------- */
 uart_handle_t g_h_uart;
-uint8_t g_rx_buf[256];
+uint8_t g_rx_buf[20];
 uint32_t g_rx_len = sizeof(g_rx_buf);
+uint8_t g_tx_buf[256];
+uint32_t g_tx_len = sizeof(g_tx_buf);
 
 /* Private Constants --------------------------------------------------------- */
 
 /* Private function prototypes ----------------------------------------------- */
 
 /* Private Function ---------------------------------------------------------- */
+
+/* Exported Variables -------------------------------------------------------- */
+extern timer_cnt_t time_cnt;
+extern timer_flg_t time_flg;
 
 /**
   * @brief  Init UART pin
@@ -64,29 +71,42 @@ static void uart_send_complete(uart_handle_t *arg)
   */
 static void uart_recv_complete(uart_handle_t *arg)
 {
+//    static uint8_t s_i;
+//    s_i++;
+
+//    if ((s_i > 1) && (*(g_h_uart.rx_buf - 2) == 0x0D) && (*(g_h_uart.rx_buf - 1) == 0x0A))
+//    {
+//        ald_uart_send_by_it(&g_h_uart, g_rx_buf, s_i);
+//        ES_LOG_PRINT("uart send:");
+//        for(uint8_t i=0; i<s_i; i++){
+//            ES_LOG_PRINT("%x", g_rx_buf[i]);
+//        }
+//        ES_LOG_PRINT("s_i %u\n", s_i);
+//        s_i = 0;
+//        ald_uart_recv_by_it(&g_h_uart, g_rx_buf, 1);
+//        
+//    }
+//    else
+//    {
+//        if (s_i >= g_rx_len) {
+//            s_i = 0;
+//        }
+
+//        ald_uart_recv_by_it(&g_h_uart, g_rx_buf + s_i, 1);
+//    }
+
+//    return;
+
     static uint8_t s_i;
+    time_cnt.uart_timeout_cnt = 0;
+    time_flg.uart_timeout_flg = 1;
     s_i++;
 
-    if ((s_i > 1) && (*(g_h_uart.rx_buf - 2) == 0x0D) && (*(g_h_uart.rx_buf - 1) == 0x0A))
-    {
-        ald_uart_send_by_it(&g_h_uart, g_rx_buf, s_i);
-        ES_LOG_PRINT("uart send:");
-        for(uint8_t i=0; i<s_i; i++){
-            ES_LOG_PRINT("%x", g_rx_buf[i]);
-        }
-        ES_LOG_PRINT("s_i %u\n", s_i);
+    if (s_i >= g_rx_len) {
         s_i = 0;
-        ald_uart_recv_by_it(&g_h_uart, g_rx_buf, 1);
-        
     }
-    else
-    {
-        if (s_i >= g_rx_len) {
-            s_i = 0;
-        }
-
-        ald_uart_recv_by_it(&g_h_uart, g_rx_buf + s_i, 1);
-    }
+    
+    ald_uart_recv_by_it(&g_h_uart, g_rx_buf + s_i, 1);
 
     return;
 }

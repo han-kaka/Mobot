@@ -34,6 +34,7 @@
 #define COMM                          4                             //NB通讯任务4
 
 #define BLUETOOTH                     5                             //蓝牙任务5
+#define DATA_DECODE                   0                             //蓝牙数据解析
 
 #define MEM_WRITE                     6                             //flash存储任务6
 

@@ -4,27 +4,26 @@
 
 //Sys_Flag_Type                           Sys_Flag_Struct = {.reserved = 0,}; 
 
-																													 
 
 //ÖÃÆğÈÎÎñ
 void set_task(uint8_t main_task,uint8_t sub_task)
 {
-		uint16_t mm,ss;
-		mm = 1<<main_task;
-		ss = 1<<sub_task;
-		g_Maintask |= mm;
-		ga_Subtask[main_task] |= ss;
+    uint16_t mm,ss;
+    mm = 1<<main_task;
+    ss = 1<<sub_task;
+    g_Maintask |= mm;
+    ga_Subtask[main_task] |= ss;
 }
 
 bool clear_task(uint8_t prio, uint8_t m_SYS_SubTask_prio)
 {
-		ga_Subtask[prio] &=~ (1<<m_SYS_SubTask_prio);
-		if(ga_Subtask[prio] == 0)
-		{
-				g_Maintask &=~(1<<prio);
-				return true;
-		}
-		return false; 
+    ga_Subtask[prio] &=~ (1<<m_SYS_SubTask_prio);
+    if(ga_Subtask[prio] == 0)
+    {
+        g_Maintask &=~(1<<prio);
+        return true;
+    }
+    return false; 
 }
 
 uint8_t get_xor(uint8_t *hex_data_buf, uint16_t len_hex)
@@ -47,12 +46,12 @@ bool xor_check(uint8_t *hex_data_buf, uint16_t len_hex)
     }
     if(temp == hex_data_buf[i])
     {
-//				RTT_PRINTF("xor true!\r\n");
+//        RTT_PRINTF("xor true!\r\n");
         return true;
     }
     else
     {
-//				RTT_PRINTF("xor false!\r\n");
+//        RTT_PRINTF("xor false!\r\n");
         return false;
     }
 }
