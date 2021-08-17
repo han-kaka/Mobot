@@ -38,27 +38,7 @@ void initial_board(void)
 
 
 void start_initial_task(void)
-{  
-//    /* Configure system clock */
-//    md_cmu_clock_config_default();
-//    /* Initialize SysTick Interrupt */
-//    md_init_1ms_tick();
-
-//    md_cmu_pll1_config(32);
-//    md_cmu_clock_config(MD_CMU_CLOCK_PLL1, 48000000);
-
-//    /* Enable ALL peripheral */
-//    SYSCFG_UNLOCK();
-//    md_cmu_enable_perh_all();
-//    SYSCFG_LOCK();
-
-//    i2c_init();
-//    uart_init();
-//    spi_init();
-//    adc_init();
-
-//    time_init();
-
+{
     /* Initialize ALD */
     ald_cmu_init();
     /* Configure system clock */
@@ -67,9 +47,9 @@ void start_initial_task(void)
     ald_cmu_perh_clock_config(CMU_PERH_ALL, ENABLE);
 
 //    i2c_init();
-//    uart_init();
+    uart_init();
 //    spi_init();
-//    adc_init();
+    adc_init();
 
     time_init();
 }

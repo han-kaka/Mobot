@@ -35,7 +35,7 @@
 
 /* Includes ------------------------------------------------------------------ */
 
-#define MD_ADC
+/* #define MD_ADC */
 /* #define MD_BKPC */
 /* #define MD_CALC */
 #define MD_CMU

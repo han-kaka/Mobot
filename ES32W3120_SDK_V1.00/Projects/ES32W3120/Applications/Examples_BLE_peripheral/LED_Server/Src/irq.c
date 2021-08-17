@@ -200,7 +200,6 @@ void I2C1_ERR_IRQHandler(void)
 void UART0_IRQHandler(void)
 {
     ald_uart_irq_handler(&g_h_uart);
-
     return;
 }
 
