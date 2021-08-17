@@ -141,7 +141,7 @@ static uint32_t flash_read_id(void)
 
 //    return ((flash_id[0] << 16) | (flash_id[1] << 8) | (flash_id[2]));  /* 制造商ID flash_id[0]和设备ID flash_id[1:2] */
 
-		uint8_t i;
+    uint8_t i;
     int r_flag = 0;
 
     g_flash_id[0] = FLASH_ID;
@@ -195,12 +195,12 @@ void spi_init(void)
 //	
 //		id = flash_read_id();
 //		ES_LOG_PRINT("Manufacturer ID is %02x & Device ID is %02x %02x\n", (uint8_t)(id >> 16), (uint8_t)(id >> 8), (uint8_t)id);
-	
-		uint32_t id;
-		
-		spi_pin_init();
-	
-		s_gs_spi.perh           = SPI0;               /* 使用SPI0 */
+
+    uint32_t id;
+    
+    spi_pin_init();
+
+    s_gs_spi.perh           = SPI0;               /* 使用SPI0 */
     s_gs_spi.init.mode      = SPI_MODE_MASTER;    /* SPI主机模式 */
     s_gs_spi.init.baud      = SPI_BAUD_4;         /* 时钟48MHz/4=12MHz */
     s_gs_spi.init.data_size = SPI_DATA_SIZE_8;    /* 8位模式 */
@@ -212,9 +212,9 @@ void spi_init(void)
     s_gs_spi.init.crc_calc  = DISABLE;
 
     ald_spi_init(&s_gs_spi);   /* 按照参数初始化SPI外设 */
-		
-		id = flash_read_id();
-		ES_LOG_PRINT("Manufacturer ID is %02x & Device ID is %02x %02x\n", (uint8_t)(id >> 16), (uint8_t)(id >> 8), (uint8_t)id);
+    
+    id = flash_read_id();
+    ES_LOG_PRINT("Manufacturer ID is %02x & Device ID is %02x %02x\n", (uint8_t)(id >> 16), (uint8_t)(id >> 8), (uint8_t)id);
 }
 
 ///**

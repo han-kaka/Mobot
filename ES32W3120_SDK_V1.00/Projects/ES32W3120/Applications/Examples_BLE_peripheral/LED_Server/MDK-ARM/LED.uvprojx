@@ -799,16 +799,6 @@
               <FileType>5</FileType>
               <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Include\md_adc.h</FilePath>
             </File>
-            <File>
-              <FileName>md_timer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Source\md_timer.c</FilePath>
-            </File>
-            <File>
-              <FileName>md_timer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Include\md_timer.h</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -2045,16 +2035,6 @@
               <FileName>md_adc.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Include\md_adc.h</FilePath>
-            </File>
-            <File>
-              <FileName>md_timer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Source\md_timer.c</FilePath>
-            </File>
-            <File>
-              <FileName>md_timer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Include\md_timer.h</FilePath>
             </File>
           </Files>
         </Group>

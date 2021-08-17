@@ -177,7 +177,6 @@ static void esble_init_set(void)
         if (ram_base_min != app_ram_base)
         {
             ES_LOG_PRINT("RAM start location can be adjusted to 0x%x.\n", ram_base_min);
-
         }
     }
 }

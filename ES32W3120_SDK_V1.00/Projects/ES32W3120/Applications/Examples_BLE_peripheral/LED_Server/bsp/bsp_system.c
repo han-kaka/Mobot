@@ -7,18 +7,18 @@
 
 void initial_board(void)
 { 
-//	md_gpio_init_t x;
+//    md_gpio_init_t x;
 
-//	x.mode = MD_GPIO_MODE_OUTPUT;
-//	x.odos = MD_GPIO_PUSH_PULL;
-//	x.pupd = MD_GPIO_PUSH_UP;
-//	x.odrv = MD_GPIO_OUT_DRIVE_NORMAL;
-//	x.flt  = MD_GPIO_FILTER_DISABLE;
-//	x.type = MD_GPIO_TYPE_CMOS;
-//	x.func = MD_GPIO_FUNC_1;
+//    x.mode = MD_GPIO_MODE_OUTPUT;
+//    x.odos = MD_GPIO_PUSH_PULL;
+//    x.pupd = MD_GPIO_PUSH_UP;
+//    x.odrv = MD_GPIO_OUT_DRIVE_NORMAL;
+//    x.flt  = MD_GPIO_FILTER_DISABLE;
+//    x.type = MD_GPIO_TYPE_CMOS;
+//    x.func = MD_GPIO_FUNC_1;
 
-//	md_gpio_init(LED_RUN_PORT, LED_RUN_PIN, &x);
-//	md_gpio_write_pin(LED_RUN_PORT, LED_RUN_PIN, 1);	
+//    md_gpio_init(LED_RUN_PORT, LED_RUN_PIN, &x);
+//    md_gpio_write_pin(LED_RUN_PORT, LED_RUN_PIN, 1);
 
     gpio_init_t x;
 
@@ -32,12 +32,14 @@ void initial_board(void)
 
     ald_gpio_init(LED_RUN_PORT, LED_RUN_PIN, &x);
     ald_gpio_write_pin(LED_RUN_PORT, LED_RUN_PIN, 1);
+    ald_gpio_init(MOTOR_CTR_PORT, MOTOR_CTR_PIN, &x);
+    ald_gpio_write_pin(MOTOR_CTR_PORT, MOTOR_CTR_PIN, 0);
 }
 
 
 void start_initial_task(void)
 {  
-//		/* Configure system clock */
+//    /* Configure system clock */
 //    md_cmu_clock_config_default();
 //    /* Initialize SysTick Interrupt */
 //    md_init_1ms_tick();
@@ -48,14 +50,14 @@ void start_initial_task(void)
 //    /* Enable ALL peripheral */
 //    SYSCFG_UNLOCK();
 //    md_cmu_enable_perh_all();
-//    SYSCFG_LOCK();	
+//    SYSCFG_LOCK();
 
-//		i2c_init();
-//		uart_init();
-//		spi_init();
-//		adc_init();
-//	
-//		time_init();
+//    i2c_init();
+//    uart_init();
+//    spi_init();
+//    adc_init();
+
+//    time_init();
 
     /* Initialize ALD */
     ald_cmu_init();
@@ -64,12 +66,12 @@ void start_initial_task(void)
     ald_cmu_clock_config(CMU_CLOCK_PLL1, 48000000);
     ald_cmu_perh_clock_config(CMU_PERH_ALL, ENABLE);
 
-//		i2c_init();
-    uart_init();
-//		spi_init();
-//		adc_init();
-//	
-//		time_init();
+//    i2c_init();
+//    uart_init();
+//    spi_init();
+//    adc_init();
+
+    time_init();
 }
 
 

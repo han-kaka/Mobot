@@ -151,6 +151,7 @@ void ADC_IRQHandler(void)
     /* Handle adc interrupt */
     ald_adc_irq_handler(&g_h_adc);
     g_adc_result = ald_adc_normal_get_value(&g_h_adc) * 3320 / 4096;
+    ES_LOG_PRINT("adc: %u mV\n", g_adc_result);
 }
 
 /**

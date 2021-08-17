@@ -72,7 +72,7 @@ static void uart_recv_complete(uart_handle_t *arg)
         ald_uart_send_by_it(&g_h_uart, g_rx_buf, s_i);
         ES_LOG_PRINT("uart send:");
         for(uint8_t i=0; i<s_i; i++){
-            ES_LOG_PRINT("%u", g_rx_buf[i]);
+            ES_LOG_PRINT("%x", g_rx_buf[i]);
         }
         ES_LOG_PRINT("s_i %u\n", s_i);
         s_i = 0;
