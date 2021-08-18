@@ -16,6 +16,16 @@ typedef struct {
     
 } timer_flg_t;
 
+typedef struct {
+    uint16_t year;
+    uint8_t moon;
+    uint8_t day;
+    uint8_t hour;
+    uint8_t min;
+    uint8_t second;
+    
+} beijing_time_t;
+
 void time_init(void);
 
 #endif

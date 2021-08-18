@@ -8,9 +8,9 @@
 /* Public Variables ---------------------------------------------------------- */
 uart_handle_t g_h_uart;
 uint8_t g_rx_buf[20];
-uint32_t g_rx_len = sizeof(g_rx_buf);
+uint8_t g_rx_len = sizeof(g_rx_buf);
 uint8_t g_tx_buf[256];
-uint32_t g_tx_len = sizeof(g_tx_buf);
+uint8_t g_tx_len;
 
 /* Private Constants --------------------------------------------------------- */
 
@@ -149,8 +149,9 @@ void uart_init(void)
     ald_uart_recv_by_it(&g_h_uart, g_rx_buf, 1);
 }
 
-
-
-
-
+void send_ble_data(void)
+{
+    ald_uart_send_by_it(&g_h_uart, g_tx_buf, g_tx_len);
+    return;
+}
 

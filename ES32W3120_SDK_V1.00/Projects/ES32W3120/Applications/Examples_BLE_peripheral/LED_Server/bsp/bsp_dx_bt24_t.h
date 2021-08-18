@@ -1,7 +1,6 @@
 #ifndef __BSP_DX_BT24_T_H
 #define __BSP_DX_BT24_T_H
 
-//#include "md_conf.h"
 #include "ald_conf.h"
 
 #include "bsp_common.h"
@@ -15,6 +14,7 @@
 #define UARTX           UART0
 
 void uart_init(void);
+void send_ble_data(void);
 
 #endif
 

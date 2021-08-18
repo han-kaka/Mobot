@@ -4,7 +4,7 @@ uint8_t g_Maintask;        //系统主任务
 uint8_t ga_Subtask[8];     //系统子任务
 
 Task_Type  Task_Struct[8] = {       //任务列表 TASK0优先级最高
-		TASK0,
+    TASK0,
     TASK1,
     TASK2,
     TASK3,

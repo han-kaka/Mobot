@@ -1,7 +1,6 @@
 #ifndef __BSP_POWER_H
 #define __BSP_POWER_H
 
-//#include "md_conf.h"
 #include "ald_conf.h"
 
 #include "bsp_common.h"

@@ -380,6 +380,16 @@
           <GroupName>app</GroupName>
           <Files>
             <File>
+              <FileName>ald_conf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\ald_conf.h</FilePath>
+            </File>
+            <File>
+              <FileName>md_conf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\md_conf.h</FilePath>
+            </File>
+            <File>
               <FileName>sdk_conf.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Inc\sdk_conf.h</FilePath>
@@ -395,6 +405,11 @@
               <FilePath>..\Inc\esapp.h</FilePath>
             </File>
             <File>
+              <FileName>irq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\irq.c</FilePath>
+            </File>
+            <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Src\main.c</FilePath>
@@ -405,19 +420,24 @@
               <FilePath>..\Src\global.h</FilePath>
             </File>
             <File>
-              <FileName>app_common.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\app\app_common.h</FilePath>
-            </File>
-            <File>
               <FileName>app_common.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\app\app_common.c</FilePath>
             </File>
             <File>
-              <FileName>irq.c</FileName>
+              <FileName>app_common.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\app\app_common.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_ble.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\irq.c</FilePath>
+              <FilePath>..\app\app_ble.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_ble.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\app\app_ble.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -435,14 +455,14 @@
               <FilePath>..\bsp\bsp_system.h</FilePath>
             </File>
             <File>
-              <FileName>bsp_common.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\bsp\bsp_common.h</FilePath>
-            </File>
-            <File>
               <FileName>bsp_common.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\bsp\bsp_common.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_common.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\bsp\bsp_common.h</FilePath>
             </File>
             <File>
               <FileName>bsp_mp6050.c</FileName>
@@ -740,11 +760,6 @@
               <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Source\md_gpio.c</FilePath>
             </File>
             <File>
-              <FileName>md_uart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Source\md_uart.c</FilePath>
-            </File>
-            <File>
               <FileName>md_cmu.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Source\md_cmu.c</FilePath>
@@ -788,16 +803,6 @@
               <FileName>md_spi.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Include\md_spi.h</FilePath>
-            </File>
-            <File>
-              <FileName>md_adc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Source\md_adc.c</FilePath>
-            </File>
-            <File>
-              <FileName>md_adc.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Include\md_adc.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1413,6 +1418,16 @@
           </GroupOption>
           <Files>
             <File>
+              <FileName>ald_conf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\ald_conf.h</FilePath>
+            </File>
+            <File>
+              <FileName>md_conf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\md_conf.h</FilePath>
+            </File>
+            <File>
               <FileName>sdk_conf.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Inc\sdk_conf.h</FilePath>
@@ -1428,6 +1443,11 @@
               <FilePath>..\Inc\esapp.h</FilePath>
             </File>
             <File>
+              <FileName>irq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\irq.c</FilePath>
+            </File>
+            <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Src\main.c</FilePath>
@@ -1438,19 +1458,24 @@
               <FilePath>..\Src\global.h</FilePath>
             </File>
             <File>
-              <FileName>app_common.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\app\app_common.h</FilePath>
-            </File>
-            <File>
               <FileName>app_common.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\app\app_common.c</FilePath>
             </File>
             <File>
-              <FileName>irq.c</FileName>
+              <FileName>app_common.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\app\app_common.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_ble.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\irq.c</FilePath>
+              <FilePath>..\app\app_ble.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_ble.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\app\app_ble.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1468,14 +1493,14 @@
               <FilePath>..\bsp\bsp_system.h</FilePath>
             </File>
             <File>
-              <FileName>bsp_common.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\bsp\bsp_common.h</FilePath>
-            </File>
-            <File>
               <FileName>bsp_common.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\bsp\bsp_common.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_common.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\bsp\bsp_common.h</FilePath>
             </File>
             <File>
               <FileName>bsp_mp6050.c</FileName>
@@ -1977,11 +2002,6 @@
               <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Source\md_gpio.c</FilePath>
             </File>
             <File>
-              <FileName>md_uart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Source\md_uart.c</FilePath>
-            </File>
-            <File>
               <FileName>md_cmu.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Source\md_cmu.c</FilePath>
@@ -2025,16 +2045,6 @@
               <FileName>md_spi.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Include\md_spi.h</FilePath>
-            </File>
-            <File>
-              <FileName>md_adc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Source\md_adc.c</FilePath>
-            </File>
-            <File>
-              <FileName>md_adc.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\..\..\..\Drivers\MD\ES32W3120\Include\md_adc.h</FilePath>
             </File>
           </Files>
         </Group>

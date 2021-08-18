@@ -237,8 +237,6 @@ int main(void)
             uint8_t m_temp = ga_TaskMapTable[g_Maintask];
             Task_Struct[m_temp].function(m_temp);
         }
-        
-        
     }
 }
 
