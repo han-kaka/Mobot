@@ -11,7 +11,7 @@ timer_handle_t g_ad16c4t_init;
 timer_clock_config_t g_ad16c4t_clock_config;
 timer_cnt_t time_cnt;
 timer_flg_t time_flg;
-beijing_time_t beijing_time;
+utc_time_t utc_time;
 
 /* Private Constants --------------------------------------------------------- */
 
@@ -29,22 +29,21 @@ void ald_timer_period_elapsed_callback(struct timer_handle_s *arg)
     time_cnt.time_1s_cnt++;
     if(100 <= time_cnt.time_1s_cnt){
         time_cnt.time_1s_cnt = 0;
-        ES_LOG_PRINT("1s\n");
-        beijing_time.second++;
-        if(60 <= beijing_time.second){
-            beijing_time.second = 0;
-            beijing_time.min++;
-            if(60 <= beijing_time.min){
-                beijing_time.min = 0;
-                beijing_time.hour++;
-                if(24 <= beijing_time.hour){
-                    beijing_time.hour = 0;
-                    beijing_time.day++;
-                    
-                }
-            }
-        }
-        
+//        ES_LOG_PRINT("1s\n");
+//        utc_time.second++;
+//        if(60 <= utc_time.second){
+//            utc_time.second = 0;
+//            utc_time.min++;
+//            if(60 <= utc_time.min){
+//                utc_time.min = 0;
+//                utc_time.hour++;
+//                if(24 <= utc_time.hour){
+//                    utc_time.hour = 0;
+//                    utc_time.day++;
+//                    
+//                }
+//            }
+//        }
     }
     
     if(1 == time_flg.uart_timeout_flg){

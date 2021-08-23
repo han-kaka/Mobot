@@ -17,14 +17,15 @@ typedef struct {
 } timer_flg_t;
 
 typedef struct {
-    uint16_t year;
-    uint8_t moon;
-    uint8_t day;
-    uint8_t hour;
-    uint8_t min;
-    uint8_t second;
+    uint8_t utc_y;
+    uint8_t utc_m;
+    uint8_t utc_d;
+    uint8_t utc_h;
+    uint8_t utc_f;
+    uint8_t utc_s;
+    uint8_t utc_5ms;
     
-} beijing_time_t;
+} utc_time_t;
 
 void time_init(void);
 

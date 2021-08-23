@@ -3,8 +3,8 @@
 #include "app_ble.h"
 #include "app_common.h"
 
-#include "task_common.h"
 #include "task_bluetooth.h"
+#include "task_common.h"
 
 /* Private Macros ------------------------------------------------------------ */
 

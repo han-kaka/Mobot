@@ -26,11 +26,6 @@ void initial_board(void)
 
 void start_initial_task(void)
 {
-    /* Initialize ALD */
-    ald_cmu_init();
-    /* Configure system clock */
-    ald_cmu_pll1_config(32);
-    ald_cmu_clock_config(CMU_CLOCK_PLL1, 48000000);
     ald_cmu_perh_clock_config(CMU_PERH_ALL, ENABLE);
 
 //    i2c_init();

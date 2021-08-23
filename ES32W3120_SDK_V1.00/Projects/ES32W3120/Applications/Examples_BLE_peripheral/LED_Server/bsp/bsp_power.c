@@ -103,7 +103,7 @@ void adc_init(void)
     g_h_adc.perh = ADC;
     g_h_adc.init.align    = ADC_DATAALIGN_RIGHT;
     g_h_adc.init.scan     = ENABLE;
-    g_h_adc.init.cont     = ENABLE;
+    g_h_adc.init.cont     = DISABLE;
     g_h_adc.init.disc     = ADC_ALL_DISABLE;
     g_h_adc.init.disc_nr  = ADC_DISC_NR_1;
     g_h_adc.init.data_bit = ADC_CONV_BIT_12;

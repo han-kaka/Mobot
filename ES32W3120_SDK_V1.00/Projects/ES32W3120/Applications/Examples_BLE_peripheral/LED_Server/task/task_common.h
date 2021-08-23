@@ -35,6 +35,7 @@
 
 #define MEM_READ                      3                             //flash读取任务3
 #define FLASH_READ                    0                             //读取flash中的数据
+#define FLASH_DATA_SEND               1                             //上传flash中的数据至上位机
 
 #define COMM                          4                             //NB通讯任务4
 
@@ -43,7 +44,8 @@
 #define RET_ACK                       1                             //蓝牙数据回执
 
 #define MEM_WRITE                     6                             //flash存储任务6
-#define FLASH_WRITE                   0                             //保存数据至flash中
+#define FLASH_DELETE                  0                             //保存数据至flash中
+#define FLASH_WRITE                   1                             //保存数据至flash中
 
 #define OTHER                         7                             //其他任务7
 
