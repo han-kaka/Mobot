@@ -31,27 +31,59 @@ extern adc_handle_t g_h_adc;
   */
 void ald_timer_period_elapsed_callback(struct timer_handle_s *arg)
 {
+    uint8_t utc_day_dif = 31;
+    
     time_cnt.time_1s_cnt++;
     if(100 <= time_cnt.time_1s_cnt){
         time_cnt.time_1s_cnt = 0;
+        utc_time.utc_s++;
+        if(60 <= utc_time.utc_s){
+            utc_time.utc_s = 0;
+            utc_time.utc_f++;
+            if(60 <= utc_time.utc_f){
+                utc_time.utc_f = 0;
+                utc_time.utc_h++;
+                if(24 <= utc_time.utc_h){
+                    utc_time.utc_h = 0;
+                    utc_time.utc_d++;
+                    switch(utc_time.utc_m){
+                        case 1:
+                        case 3:
+                        case 5:
+                        case 7:
+                        case 8:
+                        case 10:
+                        case 12:
+                            utc_day_dif=31;//31天的月份
+                            break;
+                        case 4:
+                        case 6:
+                        case 9:
+                        case 11:
+                            utc_day_dif=30;//30天的月份
+                            break;
+                        case 2:
+                            break;
+                    }
+                    if(utc_time.utc_d >= utc_day_dif){
+                        utc_time.utc_m++;
+                        utc_time.utc_d = 1;
+                        if(12 <= utc_time.utc_m){
+                            utc_time.utc_y++;
+                            utc_time.utc_m = 1;
+                            if(255 <= utc_time.utc_y){
+                                utc_time.utc_y = 21;
+                            }
+                        }
+                    }
+                }
+            }
+            ES_LOG_PRINT("utc_y:%u, utc_m:%u, utc_d:%u, utc_h:%u, utc_f:%u, utc_s:%u\n", utc_time.utc_y, utc_time.utc_m, utc_time.utc_d, utc_time.utc_h, utc_time.utc_f, utc_time.utc_s);
+        }
+
         
-        /* Start normal convert, enable interrupt */
-        ald_adc_normal_start_by_it(&g_h_adc);
-//        ES_LOG_PRINT("1s\n");
-//        utc_time.second++;
-//        if(60 <= utc_time.second){
-//            utc_time.second = 0;
-//            utc_time.min++;
-//            if(60 <= utc_time.min){
-//                utc_time.min = 0;
-//                utc_time.hour++;
-//                if(24 <= utc_time.hour){
-//                    utc_time.hour = 0;
-//                    utc_time.day++;
-//                    
-//                }
-//            }
-//        }
+//        /* Start normal convert, enable interrupt */
+//        ald_adc_normal_start_by_it(&g_h_adc);
     }
     
     if(1 == time_flg.uart_timeout_flg){
