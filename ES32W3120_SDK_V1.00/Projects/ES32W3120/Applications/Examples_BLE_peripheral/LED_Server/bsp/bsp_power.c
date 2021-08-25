@@ -124,6 +124,4 @@ void adc_init(void)
 
     /* Start normal convert, enable interrupt */
     ald_adc_normal_start_by_it(&g_h_adc);
-
-
 }

@@ -5,11 +5,18 @@
 
 #include "bsp_common.h"
 
-//-----------¸÷IO¶¨Òå--------------------------
-#define LED_RUN_PORT                               GPIOB
-#define LED_RUN_PIN                                GPIO_PIN_3
-#define MOTOR_CTR_PORT                             GPIOA
-#define MOTOR_CTR_PIN                              GPIO_PIN_15
+typedef enum {
+    E_NORMAL_MODE = 0,
+    E_IDLE_MODE = 0,
+    E_SHUTDOWN_MODE = 0,
+
+    E_MODE_MAX,
+}system_mode_e;
+
+typedef struct {
+    system_mode_e system_mode;
+    
+} system_state_t;
 
 void start_initial_task(void);
 void initial_board(void);

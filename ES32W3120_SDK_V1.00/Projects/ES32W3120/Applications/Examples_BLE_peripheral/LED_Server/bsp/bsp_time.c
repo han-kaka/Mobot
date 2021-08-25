@@ -54,13 +54,13 @@ void ald_timer_period_elapsed_callback(struct timer_handle_s *arg)
                         case 8:
                         case 10:
                         case 12:
-                            utc_day_dif=31;//31天的月份
+                            utc_day_dif = 31;//31天的月份
                             break;
                         case 4:
                         case 6:
                         case 9:
                         case 11:
-                            utc_day_dif=30;//30天的月份
+                            utc_day_dif = 30;//30天的月份
                             break;
                         case 2:
                             break;
@@ -80,7 +80,6 @@ void ald_timer_period_elapsed_callback(struct timer_handle_s *arg)
             }
             ES_LOG_PRINT("utc_y:%u, utc_m:%u, utc_d:%u, utc_h:%u, utc_f:%u, utc_s:%u\n", utc_time.utc_y, utc_time.utc_m, utc_time.utc_d, utc_time.utc_h, utc_time.utc_f, utc_time.utc_s);
         }
-
         
 //        /* Start normal convert, enable interrupt */
 //        ald_adc_normal_start_by_it(&g_h_adc);
