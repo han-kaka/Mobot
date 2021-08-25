@@ -1,4 +1,6 @@
 #include "bsp_time.h"
+#include "bsp_power.h"
+
 #include "task_common.h"
 #include "app_common.h"
 
@@ -19,6 +21,9 @@ utc_time_t utc_time;
 
 /* Private Function ---------------------------------------------------------- */
 
+/* Exported Variables -------------------------------------------------------- */
+extern adc_handle_t g_h_adc;
+
 /**
   * @brief  ald timer period elapsed callback
   * @param  arg: Pointer to timer_handle_t structure.
@@ -29,6 +34,9 @@ void ald_timer_period_elapsed_callback(struct timer_handle_s *arg)
     time_cnt.time_1s_cnt++;
     if(100 <= time_cnt.time_1s_cnt){
         time_cnt.time_1s_cnt = 0;
+        
+        /* Start normal convert, enable interrupt */
+        ald_adc_normal_start_by_it(&g_h_adc);
 //        ES_LOG_PRINT("1s\n");
 //        utc_time.second++;
 //        if(60 <= utc_time.second){

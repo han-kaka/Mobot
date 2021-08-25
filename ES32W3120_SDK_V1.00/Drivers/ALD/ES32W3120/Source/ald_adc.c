@@ -141,8 +141,8 @@ ald_status_t ald_adc_init(adc_handle_t *hperh)
 	/* Enable adc calibration */
 	SET_BIT(hperh->perh->CCR1, ADC_CCR1_TRMEN_MSK);
 	MODIFY_REG(hperh->perh->CON1, ADC_CON1_NCHESEL_MSK, hperh->init.nche_sel << ADC_CON1_NCHESEL_POS);
-//    SET_BIT(hperh->perh->CCR1, ADC_CCR1_CHPBF_EN_MSK);
-//    SET_BIT(hperh->perh->CCR1, ADC_CCR1_CHNBF_EN_MSK);
+    SET_BIT(hperh->perh->CCR1, ADC_CCR1_CHPBF_EN_MSK);
+    SET_BIT(hperh->perh->CCR1, ADC_CCR1_CHNBF_EN_MSK);
 	ald_adc_interrupt_config(hperh, ADC_IT_OVR, ENABLE);
 	ADC_ENABLE(hperh);
 

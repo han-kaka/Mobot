@@ -83,7 +83,7 @@ static void gpio_pin_config()
     x.flt  = GPIO_FILTER_DISABLE;
     x.type = GPIO_TYPE_CMOS;
     x.func = GPIO_FUNC_0;
-    ald_gpio_init(ADC_IN_PORT, ADC_IN0_PIN, &x);
+    ald_gpio_init(ADC_CHANNEL5_GPIO_PORT, ADC_CHANNEL5_PIN, &x);
 
     return;
 }
@@ -117,11 +117,13 @@ void adc_init(void)
     ald_adc_init(&g_h_adc);
 
     /* Initialize normal convert channel */
-    g_nch_config.ch   = ADC_CHANNEL_0;
+    g_nch_config.ch   = ADC_CHANNEL_5;
     g_nch_config.idx  = ADC_NCH_IDX_1;
     g_nch_config.samp = ADC_SAMPLETIME_15;
     ald_adc_normal_channel_config(&g_h_adc, &g_nch_config);
 
     /* Start normal convert, enable interrupt */
     ald_adc_normal_start_by_it(&g_h_adc);
+
+
 }
